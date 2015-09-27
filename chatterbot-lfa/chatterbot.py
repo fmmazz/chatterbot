@@ -18,6 +18,8 @@ def main(chat_script_path):
         parsed_content = parse_chat_content(read_content)
         initial, final, quit, pre, post, synon, key = \
             split_content_in_entry_types(parsed_content)
+        response = pre_proc(response, pre)
+        response = post_proc(response, post)
 
 
 def read_file(chat_script_path):
@@ -105,3 +107,47 @@ def split_content_in_entry_types(list_of_content):
     key = pop_content_of_key_entry_type(list_of_content)
 
     return initial, final, quit, pre, post, synon, key
+
+def check_quit(response, quit):
+    """Check to see if the answer from the user is a quit one"""
+    resp_sep = []
+    resp_sep = response.split()
+    for i in range(len(quit)):
+        for j in range(len(resp_sep)):
+            if resp_sep[j] in quit[i]:
+                return True
+    else:
+        return False
+
+
+def pre_proc(response, pre):
+    """Do the pre processing of the response from the user"""
+    resp_sep = []
+    pre_sep = []
+    resp_sep = response.split()
+    for i in range(len(pre)):
+        for j in range(len(resp_sep)):
+            if resp_sep[j] in pre[i]:
+                pre_sep = pre[i].split()
+                resp_sep[j] = pre_sep[2]
+    else:
+        return " ".join(resp_sep)
+
+
+def post_proc(response, post):
+    """Do the post processing of the response from the user"""
+    resp_sep = []
+    post_sep = []
+    resp_sep = response.split()
+    for i in range(len(post)):
+        for j in range(len(resp_sep)):
+            if resp_sep[j] in post[i]:
+                post_sep = post[i].split()
+                resp_sep[j] = post_sep[2]
+    else:
+        return " ".join(resp_sep)
+
+
+
+
+
