@@ -11,7 +11,6 @@ Automatons from the course of Computer Science at UFRGS.
 
 def main(chat_script_path):
     """Run the main logic of the program."""
-    response = 'nao aguento mais, adeus vida'
     try:
         read_content = read_file(chat_script_path)
     except IOError:
@@ -20,8 +19,6 @@ def main(chat_script_path):
         parsed_content = parse_chat_content(read_content)
         initial, final, quit, pre, post, synon, key = \
             split_content_in_entry_types(parsed_content)
-        print (check_quit(response, quit))
-
 
 def read_file(chat_script_path):
     """Open the file."""
@@ -123,30 +120,23 @@ def check_quit(response, quit):
 
 def pre_proc(response, pre):
     """Do the pre processing of the response from the user"""
-    resp_sep = []
-    pre_sep = []
-    resp_sep = response.split()
-    for i in range(len(pre)):
-        for j in range(len(resp_sep)):
-            if resp_sep[j] in pre[i]:
-                pre_sep = pre[i].split()
-                resp_sep[j] = pre_sep[2]
-    else:
-        return " ".join(resp_sep)
-
+    pre_s = []
+    pattern = re.compile("\\b(pre:)\\W", re.I)
+    pre_s = [pattern.sub("", word) for word in pre]
+    pre1, pre2 = zip(*(s.split(" ") for s in pre_s))
+    dic_pre = dict(zip(pre1, pre2))
+    pattern = re.compile(r'\b(' + '|'.join(dic_pre.keys()) + r')\b')
+    return pattern.sub(lambda x: dic_pre[x.group()], response)
 
 def post_proc(response, post):
     """Do the post processing of the response from the user"""
-    resp_sep = []
-    post_sep = []
-    resp_sep = response.split()
-    for i in range(len(post)):
-        for j in range(len(resp_sep)):
-            if resp_sep[j] in post[i]:
-                post_sep = post[i].split()
-                resp_sep[j] = post_sep[2]
-    else:
-        return " ".join(resp_sep)
+    post_s = []
+    pattern = re.compile("\\b(post:)\\W", re.I)
+    post_s = [pattern.sub("", word) for word in post]
+    post1, post2 = zip(*(s.split(" ") for s in post_s))
+    dic_post = dict(zip(post1, post2))
+    pattern = re.compile(r'\b(' + '|'.join(dic_post.keys()) + r')\b')
+    return pattern.sub(lambda x: dic_post[x.group()], response)
 
 
 
