@@ -19,6 +19,13 @@ def main(chat_script_path):
         synon = pop_content_given_a_simple_entry_type(list_of_content, 'synon')
         key = pop_content_of_key_entry_type(list_of_content)
 
+        initial = remove_label_from_simple_entry_types(initial)
+        final = remove_label_from_simple_entry_types(final)
+        quit = remove_label_from_simple_entry_types(quit)
+        pre = remove_label_from_simple_entry_types(pre)
+        post = remove_label_from_simple_entry_types(post)
+        synon = remove_label_from_simple_entry_types(synon)
+
 
 def read_file(chat_script_path):
     """Open the file."""
@@ -92,3 +99,15 @@ def pop_content_of_key_entry_type(list_of_content):
             i += 1
 
     return list_of_keys
+
+
+def remove_label_from_simple_entry_types(entry_type):
+    """Strips the entry type label from the list item."""
+    result = []
+    for item in entry_type:
+        # Splits the file in label and content and append only the content
+        item = item.split(":",1)[1]
+        item = item.lstrip()
+        result.append(item)
+
+    return result
