@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
 
 """Chatterbot.
 
@@ -10,6 +11,7 @@ Automatons from the course of Computer Science at UFRGS.
 
 def main(chat_script_path):
     """Run the main logic of the program."""
+    response = 'nao aguento mais, adeus vida'
     try:
         read_content = read_file(chat_script_path)
     except IOError:
@@ -18,8 +20,7 @@ def main(chat_script_path):
         parsed_content = parse_chat_content(read_content)
         initial, final, quit, pre, post, synon, key = \
             split_content_in_entry_types(parsed_content)
-        response = pre_proc(response, pre)
-        response = post_proc(response, post)
+        print (check_quit(response, quit))
 
 
 def read_file(chat_script_path):
@@ -110,12 +111,12 @@ def split_content_in_entry_types(list_of_content):
 
 def check_quit(response, quit):
     """Check to see if the answer from the user is a quit one"""
-    resp_sep = []
-    resp_sep = response.split()
-    for i in range(len(quit)):
-        for j in range(len(resp_sep)):
-            if resp_sep[j] in quit[i]:
-                return True
+    quits = []
+    pattern = re.compile("\\b(quit:)\\W", re.I)
+    quits = [pattern.sub("", word) for word in quit]
+    combined = "(" + ")|(".join(quits) + ")"
+    if re.search(combined, response):
+        return True
     else:
         return False
 
