@@ -13,12 +13,13 @@ import chat_script_parser
 def main(chat_script_path):
     """Run the main logic of the program."""
     try:
-        chat_script_parser.main(chat_script_path)
+        initial, final, quit, pre, post, synon, key = \
+            chat_script_parser.main(chat_script_path)
     except IOError:
         print("File not found. End of the program.")
     # else:
 
-
+    
 def check_quit(response, quit):
     """Check to see if the answer from the user is a quit one."""
     quits = []

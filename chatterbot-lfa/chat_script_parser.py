@@ -25,6 +25,9 @@ def main(chat_script_path):
         pre = remove_label_from_simple_entry_types(pre)
         post = remove_label_from_simple_entry_types(post)
         synon = remove_label_from_simple_entry_types(synon)
+        # key
+
+        return initial, final, quit, pre, post, synon, key
 
 
 def read_file(chat_script_path):
