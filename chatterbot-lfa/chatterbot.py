@@ -7,8 +7,11 @@ Chatterbot is a program for the discipline of Formal Languages and
 Automatons from the course of Computer Science at UFRGS.
 """
 
+import random
 import re
+
 import chat_script_parser
+
 
 def main(chat_script_path):
     """Run the main logic of the program."""
@@ -17,10 +20,11 @@ def main(chat_script_path):
             chat_script_parser.main(chat_script_path)
     except IOError:
         print("File not found. End of the program.")
-    # else:
+    else:
+        start_chat(initial, final, quit, pre, post, synon, key)
 
-    
-def check_quit(response, quit):
+
+def is_quit(response, quit):
     """Check to see if the answer from the user is a quit one."""
     quits = []
     pattern = re.compile("\\b(quit:)\\W", re.I)
@@ -52,3 +56,28 @@ def post_proc(response, post):
     dic_post = dict(zip(post1, post2))
     pattern = re.compile(r'\b(' + '|'.join(dic_post.keys()) + r')\b')
     return pattern.sub(lambda x: dic_post[x.group()], response)
+
+
+def sort_simple_message(list_of_messages):
+    """Return a message from the list of messages."""
+    random_index = random.randint(0, len(list_of_messages)-1)
+
+    return list_of_messages[random_index]
+
+
+def start_chat(initial, final, quit, pre, post, synon, key):
+    """Chat loop."""
+    # Prints initial message
+    print("Eva:", sort_simple_message(initial))
+
+    # Dialog loop
+    while True:
+        user_input = input("You: ")
+        user_input = pre_proc(user_input)
+        if is_quit(user_input, quit):
+            print("Eva:", sort_simple_message(final))
+            break
+        # else:
+            # search for the keys
+            # post process
+            # ??

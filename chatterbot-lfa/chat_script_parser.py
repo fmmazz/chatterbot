@@ -105,11 +105,11 @@ def pop_content_of_key_entry_type(list_of_content):
 
 
 def remove_label_from_simple_entry_types(entry_type):
-    """Strips the entry type label from the list item."""
+    """Strip the entry type label from the list item."""
     result = []
     for item in entry_type:
         # Splits the file in label and content and append only the content
-        item = item.split(":",1)[1]
+        item = item.split(":", 1)[1]
         item = item.lstrip()
         result.append(item)
 
