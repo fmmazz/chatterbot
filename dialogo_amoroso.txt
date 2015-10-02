@@ -9,8 +9,7 @@ pre: suicidio suicídio
 pre: voce você
 post: sou é
 post: eu você
-post: seu meu
-post: teu meu
+post: meu seu
 synon: suicidar suicídio
 synon: sofrendo sofrimento sofrer
 synon: ajuda auxilio conselho
