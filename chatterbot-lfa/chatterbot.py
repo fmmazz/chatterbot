@@ -73,6 +73,7 @@ def start_chat(initial, final, quit, pre, post, synon, key):
     # Dialog loop
     while True:
         user_input = input("You: ")
+        user_input = user_input.lower()
         user_input = pre_proc(user_input, pre)
         if is_quit(user_input, quit):
             print("Eva:", sort_simple_message(final))
