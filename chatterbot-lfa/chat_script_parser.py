@@ -11,7 +11,8 @@ def main(chat_script_path):
     else:
         list_of_content = parse_chat_content(read_content)
 
-        initial = pop_content_given_a_simple_entry_type(list_of_content, 'initial')
+        initial = pop_content_given_a_simple_entry_type(list_of_content,
+                                                        'initial')
         final = pop_content_given_a_simple_entry_type(list_of_content, 'final')
         quit = pop_content_given_a_simple_entry_type(list_of_content, 'quit')
         pre = pop_content_given_a_simple_entry_type(list_of_content, 'pre')
@@ -25,7 +26,7 @@ def main(chat_script_path):
         pre = remove_label_from_simple_entry_types(pre)
         post = remove_label_from_simple_entry_types(post)
         synon = remove_label_from_simple_entry_types(synon)
-        # key
+        key = format_key_entry_type(key)
 
         return initial, final, quit, pre, post, synon, key
 
@@ -108,9 +109,42 @@ def remove_label_from_simple_entry_types(entry_type):
     """Strip the entry type label from the list item."""
     result = []
     for item in entry_type:
-        # Splits the file in label and content and append only the content
+        # Splits the item in label and content and append only the content
         item = item.split(":", 1)[1]
         item = item.lstrip()
         result.append(item)
+
+    return result
+
+
+def format_key_entry_type(key_entry_type):
+    """Format the string, returning [[key], [decomp], [reasmb]]."""
+    result = []
+
+    for entry in key_entry_type:
+        formated_entry = []
+
+        # Append the key related string
+        key = entry[0]
+        key = key.split(":", 1)[1]
+        key = key.lstrip()
+        formated_entry.append(key)
+
+        # Append the decomp related string
+        decomp = entry[1]
+        decomp = decomp.split(":", 1)[1]
+        decomp = decomp.lstrip()
+        formated_entry.append(decomp)
+
+        # Append the list of reasm related strings
+        formated_reasmb_entry = []
+        for i in range(2, len(entry)):
+            reasmb = entry[i].split(":", 1)[1]
+            reasmb = reasmb.lstrip()
+            formated_reasmb_entry.append(reasmb)
+        formated_entry.append(formated_reasmb_entry)
+
+        # Append all the items in order to a sublist
+        result.append(formated_entry)
 
     return result
