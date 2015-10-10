@@ -65,6 +65,18 @@ def sort_simple_message(list_of_messages):
     return list_of_messages[random_index]
 
 
+def select_key_that_matches_user_input(user_input, key):
+    """Match the user input with a key."""
+    # Match the user input with a key
+    for index in range(len(key)):
+        some_key = key[index]
+        value_of_the_key = some_key[0]
+        if value_of_the_key in user_input:
+            print("Found value", value_of_the_key)
+            break
+    return key[index]
+
+
 def start_chat(initial, final, quit, pre, post, synon, key):
     """Chat loop."""
     # Prints initial message
@@ -75,6 +87,7 @@ def start_chat(initial, final, quit, pre, post, synon, key):
         user_input = input("You: ")
         user_input = user_input.lower()
         user_input = pre_proc(user_input, pre)
+
         if is_quit(user_input, quit):
             print("Eva:", sort_simple_message(final))
             break
