@@ -35,7 +35,10 @@ class ChatterBot:
                 self.print_simple_message(self.final)
                 break
             else:
-                pass
+                matched_key = \
+                    self.select_key_that_matches_user_input(user_input)
+                response = self.decomp_to_regex(matched_key)
+                print(response)
 
     def select_key_that_matches_user_input(self, user_input):
         """Match the user input with a key. Return the mached key"""
@@ -53,10 +56,10 @@ class ChatterBot:
         return list_of_messages[random_index]
 
     def print_simple_message(self, message):
-        print(self.sort_simple_message(message))
+        print('Bot:', self.sort_simple_message(message))
 
     def get_user_input(self):
-        user_input = input()
+        user_input = input('You: ')
         user_input = user_input.lower()
         user_input = self.pre_proc(user_input)
         return user_input
@@ -92,6 +95,20 @@ class ChatterBot:
         dic_post = dict(zip(post1, post2))
         pattern = re.compile(r'\b(' + '|'.join(dic_post.keys()) + r')\b')
         return pattern.sub(lambda x: dic_post[x.group()], response)
+
+    def decomp_to_regex(self, matched_key):
+        key = matched_key[0]
+        decomp = matched_key[1]
+        response = matched_key[2][0]
+        if decomp == '*':
+            result = None
+        elif re.search(r'\*\s%s\s\*' % key, decomp):
+            result = re.search(r'(.*)\s*%s\s*(.*)' % key, response)
+        elif re.search(r'%s\s\*' % key, decomp):
+            result = re.search(r'()%s\s*(.*)' % key, response)
+        else:
+            result = re.search(r'(.*)\s*%s()' % key, response)
+        return result
 
 
 def main(chat_script_path):
