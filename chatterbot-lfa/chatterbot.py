@@ -104,10 +104,16 @@ class ChatterBot:
         elif re.search(r'\*\s%s\s\*' % key, decomp):
             result = re.search(r'(.*)\s*%s\s*(.*)' % key, response)
         elif re.search(r'%s\s\*' % key, decomp):
-            result = re.search(r'()%s\s*(.*)' % key, response)
+            result = re.search(r'%s\s*(.*)' % key, response)
         else:
-            result = re.search(r'(.*)\s*%s()' % key, response)
+            result = re.search(r'(.*)\s*%s' % key, response)
         return result
+
+    def sub_reasbm(reasbm, decomp):
+        if re.search(r'\(1\)', reasbm):
+            return re.sub(r'\(1\)', decomp.group(1), reasbm)
+        else:
+            return re.sub(r'\(2\)', decomp.group(2), reasbm)
 
 
 def main(chat_script_path):
