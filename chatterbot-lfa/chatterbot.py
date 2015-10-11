@@ -37,8 +37,8 @@ class ChatterBot:
             else:
                 matched_key = \
                     self.select_key_that_matches_user_input(user_input)
-                response = self.decomp_to_regex(matched_key)
-                print(response)
+                response = self.decomp_to_regex(matched_key, user_input)
+
 
     def select_key_that_matches_user_input(self, user_input):
         """Match the user input with a key. Return the mached key"""
@@ -96,12 +96,11 @@ class ChatterBot:
         pattern = re.compile(r'\b(' + '|'.join(dic_post.keys()) + r')\b')
         return pattern.sub(lambda x: dic_post[x.group()], response)
 
-    def decomp_to_regex(self, matched_key):
+    def decomp_to_regex(self, matched_key, response):
         key = matched_key[0]
         decomp = matched_key[1]
-        response = matched_key[2][0]
         if decomp == '*':
-            result = None
+            result = re.search(r'()()', response)
         elif re.search(r'\*\s%s\s\*' % key, decomp):
             result = re.search(r'(.*)\s*%s\s*(.*)' % key, response)
         elif re.search(r'%s\s\*' % key, decomp):
