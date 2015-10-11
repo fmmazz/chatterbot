@@ -40,6 +40,7 @@ class ChatterBot:
                 response = self.decomp_to_regex(matched_key, user_input)
                 reasbm_phr = self.sort_simple_message(matched_key[2])
                 final_phr = self.sub_reasbm(reasbm_phr, response)
+                final_phr = self.post_proc(final_phr)
                 print(final_phr)
 
 
