@@ -16,6 +16,9 @@ import chat_script_parser
 class ChatterBot:
 
     def __init__(self, initial, final, quit, pre, post, synon, key):
+        """Set the chatterbot attributes."""
+        self.bot_name = "Bot"
+        self.user_name = "You"
         self.initial = initial
         self.final = final
         self.quit = quit
@@ -27,12 +30,14 @@ class ChatterBot:
     def start_chat(self):
         """Chat loop."""
         # Prints initial message
-        self.print_simple_message(self.initial)
+        self.print_simple_message(self.initial[0])
         # Dialog loop
         while True:
             user_input = self.get_user_input()
+            user_input = self.pre_proc(user_input)
             if self.is_quit(user_input):
-                self.print_simple_message(self.final)
+                final_phr = self.sort_simple_message(self.final)
+                self.print_simple_message(final_phr)
                 break
             else:
                 matched_key = \
@@ -41,8 +46,7 @@ class ChatterBot:
                 reasbm_phr = self.sort_simple_message(matched_key[2])
                 final_phr = self.sub_reasbm(reasbm_phr, response)
                 final_phr = self.post_proc(final_phr)
-                print(final_phr)
-
+                self.print_simple_message(final_phr)
 
     def select_key_that_matches_user_input(self, user_input):
         """Match the user input with a key. Return the mached key"""
@@ -60,12 +64,11 @@ class ChatterBot:
         return list_of_messages[random_index]
 
     def print_simple_message(self, message):
-        print('Bot:', self.sort_simple_message(message))
+        print(self.bot_name + ':', message)
 
     def get_user_input(self):
-        user_input = input('You: ')
+        user_input = input(self.user_name + ': ')
         user_input = user_input.lower()
-        user_input = self.pre_proc(user_input)
         return user_input
 
     # Text processing methods that use regular expression
