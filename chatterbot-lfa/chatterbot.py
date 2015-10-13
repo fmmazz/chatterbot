@@ -85,7 +85,7 @@ class ChatterBot:
         pattern = re.compile("\\b(quit:)\\W", re.I)
         quits = [pattern.sub("", word) for word in self.quit]
         combined = "(" + ")|(".join(quits) + ")"
-        if re.search(combined, response):
+        if re.search(combined, response, re.IGNORECASE):
             return True
         else:
             return False
