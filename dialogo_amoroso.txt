@@ -20,11 +20,6 @@ key: obrigado
 		reasmb: Não tem de que.
 		reasmb: De nada.
 		reasmb: Estou sempre aqui para te ajudar.
-key: me ajude
-	decomp: * me ajude *
-		reasmb: Estou aqui para isso. Diga-me qual é o problema.
- 		reasmb: Claro que irei ajudar, estou aqui pra isso.
-    reasmb: Voce ja pensou como poderia resolver (2)?
 key: difícil
 	decomp: *  difícil
 		reasmb: Você já tentou fazer isso?
@@ -36,12 +31,6 @@ key: desculpe
 		reasmb: Pare de pedir desculpas.
 		reasmb: Não peça desculpas, somente FAÇA.
 		reasmb: Pare de se desculpar e vá atrás do seu amor.
-key: não gosta de mim
-	decomp: * não gosta de mim
-		reasmb: Gosta sim, você que não percebeu ainda.
-		reasmb: Como você sabe que (1) não gosta?
-    reasmb: Pergunte a (1) sobre seus sentimentos.
-		reasmb: Não pense negativo, a vida é bela e (1) gosta de você!
 key: amo
 	decomp: amo *
 		reasmb: Você realmente ama (1)?
@@ -52,13 +41,6 @@ key: se
 		reasmb: Você deseja que (2)?
 		reasmb: Sério? Se (2)?
     reasmb: Acha que é possível (2) ?
-key: o que devo fazer
-	decomp: *
-		reasmb: Chame seu amor para sair.
-		reasmb: Convide para dar uma volta.
-		reasmb: O que você acha que deveria fazer?
-    reasmb: Seria certo fazer o que você pensar em fazer?
- 		reasmb: Você já pensou nas diferentes possibilidades?
 key: sinto
 	decomp: sinto *
 		reasmb: Você realmente sente (1)?
@@ -77,17 +59,18 @@ key: digno
 key: matar
 	decomp: * matar
 		reasmb: Não faça isso, todos são dignos de amor! Vou lhe recomendar um psicólogo especialista nesse assunto.
-key: não sei
-	decomp: * não sei
-		reasmb: E eu vou saber??
-		reasmb: Se você não sabe, eu não sei também =/
-		reasmb: Você já procurou respostas para entender isso?
-		reasmb: Vamos lá, você consegue descobrir!
 key: sofrendo
 	decomp: * sofrendo *
 		reasmb: Por que esse sofrimento?
 		reasmb: Esse sofrimento faz sentido?
 		reasmb: O sofrimento é passageiro, eu garanto!
+key: terminou
+	decomp: * terminou *
+		reasmb: Nao me diga isso!!!
+		reasmb: (1) terminou??
+		reasmb: Nao fique assim, tudo passa :)
+		reasmb: Que droga hein! Voce ja tentou arrumar isso?
+		reasmb: Sinto muito! O que você acha sobre isso?
 key: sim
 	decomp: sim
 		reasmb: Me conte mais sobre!
@@ -99,13 +82,23 @@ key: não
 		reasmb: Hmmmm! Interessante!
 		reasmb: Nao me diga!!
 		reasmb: Verdade???
-key: terminou
-	decomp: * terminou *
-		reasmb: Nao me diga isso!!!
-		reasmb: (1) terminou??
-		reasmb: Nao fique assim, tudo passa :)
-		reasmb: Que droga hein! Voce ja tentou arrumar isso?
-		reasmb: Sinto muito! O que você acha sobre isso?
+key: faço
+	decomp: *
+		reasmb: Chame seu amor para sair.
+		reasmb: Convide para dar uma volta.
+		reasmb: O que você acha que deveria fazer?
+    reasmb: Seria certo fazer o que você pensar em fazer?
+ 		reasmb: Você já pensou nas diferentes possibilidades?
+key: gosta
+	decomp: * gosta
+		reasmb: Como você sabe que (1) sente isso?
+    reasmb: Pergunte a (1) sobre seus sentimentos.
+		reasmb: Pense positivo, a vida é bela e (1) gosta de você!
+key: ajude
+	decomp: * ajude *
+		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
+ 		reasmb: Claro que irei ajudar, estou aqui pra isso.
+    reasmb: Voce ja pensou como poderia resolver (2)?
 key:
 	decomp: *
 		reasmb: Não posso te ajudar com isso!
