@@ -10,8 +10,6 @@ Automatons from the course of Computer Science at UFRGS.
 import random
 import re
 
-import chat_script_parser
-
 
 class ChatterBot:
 
@@ -132,15 +130,3 @@ class ChatterBot:
             return re.sub(r'\(2\)', decomp.group(2), reasbm)
         else:
             return reasbm
-
-
-def main(chat_script_path):
-    """Run the main logic of the program."""
-    try:
-        initial, final, quit, pre, post, synon, key = \
-            chat_script_parser.main(chat_script_path)
-    except IOError:
-        print("File not found. End of the program.")
-    else:
-        AChatterBot = ChatterBot(initial, final, quit, pre, post, synon, key)
-        AChatterBot.start_chat()
