@@ -43,7 +43,7 @@ class ChatterBot:
                 response = self.decomp_to_regex(matched_key, user_input)
                 reasbm_phr = self.sort_simple_message(matched_key[2])
                 final_phr = self.sub_reasbm(reasbm_phr, response)
-                final_phr = self.post_proc(final_phr)
+                #final_phr = self.post_proc(final_phr)
                 self.print_simple_message(final_phr)
 
     def select_key_that_matches_user_input(self, user_input):
@@ -125,8 +125,10 @@ class ChatterBot:
 
     def sub_reasbm(self, reasbm, decomp):
         if re.search(r'\(1\)', reasbm):
-            return re.sub(r'\(1\)', decomp.group(1), reasbm)
+            phrase = self.post_proc(decomp.group(1))
+            return re.sub(r'\(1\)', phrase, reasbm)
         elif re.search(r'\(2\)', reasbm):
-            return re.sub(r'\(2\)', decomp.group(2), reasbm)
+            phrase = self.post_proc(decomp.group(2))
+            return re.sub(r'\(2\)', phrase, reasbm)
         else:
             return reasbm
