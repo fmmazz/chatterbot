@@ -49,14 +49,23 @@ class ChatterBot:
                 self.print_simple_message(final_phr)
 
     def select_key_that_matches_user_input(self, user_input):
-        """Match the user input with a key. Return the mached key"""
+        """Match the user input with a key. Return the mached key."""
+        words_of_user_input = self.string_to_list_of_words(user_input)
         # Match the user input with a key
         for index in range(len(self.key)):
             some_key = self.key[index]
             value_of_the_key = some_key[0]
-            if value_of_the_key in user_input:
+            if value_of_the_key in words_of_user_input:
                 break
         return self.key[index]
+
+    def string_to_list_of_words(self, user_string):
+        """Split the user input in words, save in list."""
+        list_of_words = []
+        for word in user_string.split():
+            word = word.strip(".,;?")
+            list_of_words.append(word)
+        return list_of_words
 
     def sort_simple_message(self, list_of_messages):
         """Return a message from the list of messages."""
