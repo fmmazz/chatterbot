@@ -10,7 +10,7 @@ def main(chat_script_path):
         raise
     else:
         list_of_content = parse_chat_content(read_content)
-
+        # Parses the content
         initial = pop_content_given_a_simple_entry_type(list_of_content,
                                                         'initial')
         final = pop_content_given_a_simple_entry_type(list_of_content, 'final')
@@ -19,7 +19,7 @@ def main(chat_script_path):
         post = pop_content_given_a_simple_entry_type(list_of_content, 'post')
         synon = pop_content_given_a_simple_entry_type(list_of_content, 'synon')
         key = pop_content_of_key_entry_type(list_of_content)
-
+        # Removes label from the first string
         initial = remove_label_from_simple_entry_types(initial)
         final = remove_label_from_simple_entry_types(final)
         quit = remove_label_from_simple_entry_types(quit)
@@ -27,7 +27,6 @@ def main(chat_script_path):
         post = remove_label_from_simple_entry_types(post)
         synon = remove_label_from_simple_entry_types(synon)
         key = format_key_entry_type(key)
-
         return initial, final, quit, pre, post, synon, key
 
 
@@ -36,7 +35,6 @@ def read_file(chat_script_path):
     chat_script_file = open(chat_script_path)
     read_content = chat_script_file.read()
     chat_script_file.close()
-
     return read_content
 
 
@@ -44,14 +42,12 @@ def parse_chat_content(read_content):
     """Parse the read content, removing the format characters."""
     # Removes the encoding markup
     read_content = read_content.lstrip('\ufeff')
-
     # Removes whitespace and tabs from the strings
     # adding them to the result variable
     parsed_content = []
     for line in read_content.splitlines():
         line = line.strip(' \t')
         parsed_content.append(line)
-
     return parsed_content
 
 
@@ -65,7 +61,6 @@ def pop_content_given_a_simple_entry_type(list_of_content, entry_type):
             list_of_content.pop(i)
         else:
             i += 1
-
     return result
 
 
@@ -77,31 +72,25 @@ def pop_content_of_key_entry_type(list_of_content):
     i = 0
     while i < len(list_of_content):
         a_key_and_its_values = []
-
         # Get all the 'keys' markups and its childs
         if list_of_content[i].startswith('key'):
             a_key_and_its_values.append(list_of_content[i])
             list_of_content.pop(i)
-
             # Get all the 'decomp' markups and its childs
             while (list_of_content and
                    list_of_content[i].startswith('decomp')):
                 a_key_and_its_values.append(list_of_content[i])
                 list_of_content.pop(i)
-
                 # Get all the 'reasmb' markups
                 while (list_of_content and
                        list_of_content[i].startswith('reasmb')):
                     a_key_and_its_values.append(list_of_content[i])
                     list_of_content.pop(i)
-
             # Append the popped content to the final list
             list_of_keys.append(a_key_and_its_values)
-
         # Only increments the index i if doesn't found a key
         else:
             i += 1
-
     return list_of_keys
 
 
@@ -113,29 +102,24 @@ def remove_label_from_simple_entry_types(entry_type):
         item = item.split(":", 1)[1]
         item = item.lstrip()
         result.append(item)
-
     return result
 
 
 def format_key_entry_type(key_entry_type):
     """Format the string, returning [[key], [decomp], [reasmb]]."""
     result = []
-
     for entry in key_entry_type:
         formated_entry = []
-
         # Append the key related string
         key = entry[0]
         key = key.split(":", 1)[1]
         key = key.lstrip()
         formated_entry.append(key)
-
         # Append the decomp related string
         decomp = entry[1]
         decomp = decomp.split(":", 1)[1]
         decomp = decomp.lstrip()
         formated_entry.append(decomp)
-
         # Append the list of reasm related strings
         formated_reasmb_entry = []
         for i in range(2, len(entry)):
@@ -143,8 +127,6 @@ def format_key_entry_type(key_entry_type):
             reasmb = reasmb.lstrip()
             formated_reasmb_entry.append(reasmb)
         formated_entry.append(formated_reasmb_entry)
-
         # Append all the items in order to a sublist
         result.append(formated_entry)
-
     return result

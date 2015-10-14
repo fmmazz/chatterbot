@@ -10,30 +10,27 @@ pre: voce você
 post: sou é
 post: eu você
 post: meu seu
-<<<<<<< HEAD
 post: me te
-=======
 synon: sofrer sofrendo sofrimento
->>>>>>> origin/master
 synon: suicidar suicídio
 synon: matar morte morrer
 synon: ajudar ajuda conselho
 synon: ele menino garoto guri
 synon: ela menina garota guria
-key: obrigado
+key: obrigado 35
 	decomp: * obrigado *
 		reasmb: Não tem de que.
 		reasmb: De nada.
 		reasmb: Estou sempre aqui para te ajudar.
-key: difícil
+key: difícil 2
 	decomp: *  difícil
 		reasmb: Você já tentou fazer isso?
    	reasmb: Não é assim tão difícil. Você precisa se esforçar um pouco mais.
-key: desculpe
+key: desculpe 20
 	decomp: *
 		reasmb: Por favor, não se desculpe.
 		reasmb: Pare de se desculpar e vá atrás do seu amor!
-key: amo
+key: amo 30
 	decomp: amo *
 		reasmb: Você realmente ama (1)?
 		reasmb: Se você ama (1) por que não dizer a (1)?
@@ -43,13 +40,13 @@ key: se 10
 		reasmb: Você deseja que (2)?
 		reasmb: Sério? Se (2)?
     reasmb: Acha que é possível (2) ?
-key: sinto
+key: sinto 5
 	decomp: sinto *
 		reasmb: Você realmente sente (1)?
 		reasmb: O que você acha sobre sentir (1) ?
     reasmb: Esse sentimento é verdadeiro?
     reasmb: Por que você sente isso?
-key: coragem
+key: coragem 11
 	decomp: * coragem *
 		reasmb: Claro que você tem!
  		reasmb: Acredite em si mesmo!
@@ -58,69 +55,59 @@ key: coragem
 key: digno 5
 	decomp: * digno *
 		reasmb: Claro que você é digno (2). Achei que você é uma pessoal amável.
-key: sofrendo
+key: sofrendo 15
 	decomp: * sofrendo *
 		reasmb: Por que esse sofrimento?
 		reasmb: Esse sofrimento faz sentido?
 		reasmb: O sofrimento é passageiro, eu garanto!
-key: terminou
+key: terminou 3
 	decomp: * terminou *
 		reasmb: (1) terminou?
 		reasmb: Voce se sente triste?
 		reasmb: Sinto muito! O que você acha sobre isso?
-key: sim
+key: sim 2
 	decomp: sim
 		reasmb: Curioso, Conte-me mais.
 		reasmb: Muito interessante. Por favor, continue.
 		reasmb: Você está certo disso?
-key: não
+key: não 2
 	decomp: não
-<<<<<<< HEAD
 		reasmb: Conte-me mais sobre!
-		reasmb: Hmmmm! Interessante!
-		reasmb: Nao me diga!!
-		reasmb: Verdade???
+		reasmb: Como você pode ter certeza disso?
 key: faço 5
-	decomp: *
+	decomp: faço
 		reasmb: Chame seu amor para sair.
 		reasmb: Convide para dar uma volta.
-=======
-		reasmb: Conte-me mais sobre isso.
-		reasmb: Tem certeza?
-key: faço
-	decomp: faço
-		reasmb: Convide seu amor para sair.
->>>>>>> origin/master
-		reasmb: O que você acha que deveria fazer?
-    reasmb: Você acha correto fazer o que pensar em fazer?
- 		reasmb: Você já pensou nas diferentes possibilidades?
+		reasmb: Seja sincero, e seja insistente.
 key: gosta 5
 	decomp: * gosta
 		reasmb: Como você sabe que (1) sente isso?
     reasmb: Pergunte a (1) sobre o que sente.
 		reasmb: Pense positivo, a vida é bela e (1) vai gostar de você!
-key: sofrer
+key: sofrer 7
 	decomp: sofrer
 		reasmb: Não se preocupe, esse sentimento não durará muito. Falo por experiência.
-key: ajudar
+key: ajudar 10
 	decomp: * ajudar *
 		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
  		reasmb: Claro que irei ajudar, estou aqui pra isso.
-    reasmb: Voce ja pensou como poderia resolver (2)?
-key: matar
+key: matar 20
 	decomp: matar
 		reasmb: Não faça isso, todos são dignos de amor! Vou lhe recomendar um psicólogo especialista nesse assunto.
-key: suicidar
+key: suicidar 20
 	decomp: suicidar
 		reasmb: Você veio até aqui porque não quer fazer isso. Conte-me mais, que irei ajudar você.
-		reasmb: Tenha calma. Explique-me melhor, você quer fazer isso por que?
-key: ela
-	decomp: ela
+		reasmb: Tenha calma. O que aconteceu exatamente?
+key: apaixonado 20
+	decomp: apaixonado
+		reasmb: Isso pode ser bom pra vocês, mas você deve se certificar que do que sente.
+key: gosto 1
+	decomp: gosto
 		reasmb: O que faz ela ser especial para você?
-key: ele
-	decom: ele
 		reasmb: Por que você acha ele especial?
-key:
+key: 0
 	decomp: *
-		reasmb: Não compreendi ainda, conte-me mais.
-		reasmb: Não estou entendendo, fale mais sobre isso.
+		reasmb: Certo, conte-me mais.
+		reasmb: Estou entendendo, fale mais sobre isso.
+		reasmb: Estou ouvindo, continue.
+		reasmb: Hmm. Fale-me mais.

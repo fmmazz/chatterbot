@@ -42,7 +42,8 @@ class ChatterBot:
                 break
             else:
                 matched_key = \
-                    self.select_key_that_matches_user_input(user_input, keys_weights)
+                    self.select_key_that_matches_user_input(
+                        user_input, keys_weights)
                 response = self.decomp_to_regex(matched_key, user_input)
                 reasbm_phr = self.sort_simple_message(matched_key[2])
                 final_phr = self.sub_reasbm(reasbm_phr, response)
@@ -62,28 +63,24 @@ class ChatterBot:
             self.key[index][0] = phrase.group(1)
         return keys_weight
 
-
     def select_key_that_matches_user_input(self, user_input, keys_weights):
         """Match the user input with a key. Return the mached key."""
-        keys_matched = l = []
+        keys_matched = []
         words_of_user_input = self.string_to_list_of_words(user_input)
-
         # Match the user input with a key
-
         for index in range(len(words_of_user_input)):
             if words_of_user_input[index] in keys_weights:
                 keys_matched.append(words_of_user_input[index])
-        keys_matched = sorted(keys_matched, key=lambda x: keys_weights[x], reverse=True)
+        keys_matched = sorted(
+            keys_matched, key=lambda x: keys_weights[x], reverse=True)
 
         if not keys_matched:
-            return (self.key[len(self.key) -1 ])
+            return (self.key[len(self.key) - 1])
         else:
             for i in range(len(self.key)):
                 k_word = re.search(r'(\w*)', self.key[i][0])
                 if keys_matched[0] == k_word.group(1):
                     return self.key[i]
-            
-
 
     def string_to_list_of_words(self, user_string):
         """Split the user input in words, save in list."""
@@ -95,7 +92,7 @@ class ChatterBot:
 
     def sort_simple_message(self, list_of_messages):
         """Return a message from the list of messages."""
-        random_index = random.randint(0, len(list_of_messages)-1)
+        random_index = random.randint(0, len(list_of_messages) - 1)
         return list_of_messages[random_index]
 
     def print_simple_message(self, message):
@@ -173,8 +170,8 @@ class ChatterBot:
         if needed.
         """
         if re.search(r'\(1\)', reasbm):
-	        phrase = self.post_proc(decomp.group(1))
-	        return re.sub(r'\(1\)', phrase, reasbm)
+            phrase = self.post_proc(decomp.group(1))
+            return re.sub(r'\(1\)', phrase, reasbm)
         elif re.search(r'\(2\)', reasbm):
             phrase = self.post_proc(decomp.group(2))
             return re.sub(r'\(2\)', phrase, reasbm)
