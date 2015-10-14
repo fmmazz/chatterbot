@@ -39,11 +39,11 @@ class ChatterBot:
                 self.print_simple_message(final_phr)
                 break
             else:
-                matched_key = \
-                    self.select_key_that_matches_user_input(
-                        user_input)
-                response = self.decomp_to_regex(matched_key, user_input)
-                reasbm_phr = self.sort_simple_message(matched_key[2])
+                matched_key = self.select_key_that_matches_user_input(
+                    user_input)
+                response = self.decomp_to_regex(matched_key,
+                                                user_input)
+                reasbm_phr = self.pick_a_reasmb_phrase(matched_key[2])
                 final_phr = self.sub_reasbm(reasbm_phr, response)
                 self.print_simple_message(final_phr)
 
@@ -75,10 +75,11 @@ class ChatterBot:
         if not keys_matched:
             return (self.key[len(self.key) - 1])
         else:
-            for i in range(len(self.key)):
-                k_word = re.search(r'(\w*)', self.key[i][0])
+            index = 0
+            for index in range(len(self.key)):
+                k_word = re.search(r'(\w*)', self.key[index][0])
                 if keys_matched[0] == k_word.group(1):
-                    return self.key[i]
+                    return self.key[index]
 
     def string_to_list_of_words(self, user_string):
         """Split the user input in words, save in list."""
@@ -87,6 +88,30 @@ class ChatterBot:
             word = word.strip(".,;?")
             list_of_words.append(word)
         return list_of_words
+
+    def pick_a_reasmb_phrase(self, list_of_reasmb_phrases):
+        """Return a message from the list of messages."""
+        # Search for a random reasmb phrase wich is not used yet
+        counter = 0
+        lenght_of_the_list = len(list_of_reasmb_phrases)
+        while counter < lenght_of_the_list:
+            sorted_reasmb_phrase = list_of_reasmb_phrases[counter]
+            if sorted_reasmb_phrase[1] is False:
+                sorted_reasmb_phrase[1] = True
+                return sorted_reasmb_phrase[0]
+            else:
+                counter += 1
+        # If all phrases ared used, mark all them as not used
+        list_of_reasmb_phrases = self.mark_reasmb_as_not_used(
+            list_of_reasmb_phrases)
+        # Returns the first one
+        list_of_reasmb_phrases[0][1] = True
+        return list_of_reasmb_phrases[0][0]
+
+    def mark_reasmb_as_not_used(self, list_of_reasmb_phrases):
+        for reasbm_phrase in list_of_reasmb_phrases:
+            reasbm_phrase[1] = False
+        return list_of_reasmb_phrases
 
     def sort_simple_message(self, list_of_messages):
         """Return a message from the list of messages."""

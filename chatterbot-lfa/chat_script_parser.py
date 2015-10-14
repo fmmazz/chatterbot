@@ -106,7 +106,7 @@ def remove_label_from_simple_entry_types(entry_type):
 
 
 def format_key_entry_type(key_entry_type):
-    """Format the string, returning [[key], [decomp], [reasmb]]."""
+    """Format the string, returning [[key], [decomp], [reasmb, not_used]]."""
     result = []
     for entry in key_entry_type:
         formated_entry = []
@@ -120,12 +120,12 @@ def format_key_entry_type(key_entry_type):
         decomp = decomp.split(":", 1)[1]
         decomp = decomp.lstrip()
         formated_entry.append(decomp)
-        # Append the list of reasm related strings
+        # Append the list of reasmb related strings
         formated_reasmb_entry = []
         for i in range(2, len(entry)):
             reasmb = entry[i].split(":", 1)[1]
             reasmb = reasmb.lstrip()
-            formated_reasmb_entry.append(reasmb)
+            formated_reasmb_entry.append([reasmb, False])
         formated_entry.append(formated_reasmb_entry)
         # Append all the items in order to a sublist
         result.append(formated_entry)

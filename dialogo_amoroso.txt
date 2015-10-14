@@ -78,7 +78,7 @@ key: faço 5
 	decomp: faço
 		reasmb: Chame seu amor para sair.
 		reasmb: Convide para dar uma volta.
-		reasmb: Seja sincero, e seja insistente.
+		reasmb: Seja sincero e seja insistente.
 key: gosta 5
 	decomp: * gosta
 		reasmb: Como você sabe que (1) sente isso?
