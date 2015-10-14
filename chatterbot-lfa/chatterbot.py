@@ -125,7 +125,6 @@ class ChatterBot:
     def get_user_input(self):
         """Ask for the user input, showing the defined name for it."""
         user_input = input(self.user_name + ': ')
-        user_input = user_input.lower()
         return user_input
 
     # Text processing methods that use regular expression

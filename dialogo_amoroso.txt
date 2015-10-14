@@ -23,23 +23,30 @@ key: obrigado 35
 		reasmb: De nada.
 		reasmb: Estou sempre aqui para te ajudar.
 key: difícil 2
-	decomp: *  difícil
+	decomp: * difícil
 		reasmb: Você já tentou fazer isso?
    	reasmb: Não é assim tão difícil. Você precisa se esforçar um pouco mais.
+key: fácil 2
+	decomp: * fácil
+		reasmb: Como você que é assim?
 key: desculpe 20
 	decomp: *
 		reasmb: Por favor, não se desculpe.
 		reasmb: Pare de se desculpar e vá atrás do seu amor!
+key: desculpas 10
+	decomp: *
+		reasmb: Tenha paciência, essa pessoa pode estar confusa sobre o que sente.
+key: ama 31
+	decomp: ama
+		reasmb: Como você tem certeza disso? Já perguntou para essa pessoa?
+		reasmb: E o que você pode fazer a respeito?
 key: amo 30
 	decomp: amo *
-		reasmb: Você realmente ama (1)?
+		reasmb: Por que você tem certeza que sente isso?
 		reasmb: Se você ama (1) por que não dizer a (1)?
-		reasmb: O amor é lindo, faça (1) saber dele.
-key: se 10
-	decomp: * se *
-		reasmb: Você deseja que (2)?
-		reasmb: Sério? Se (2)?
-    reasmb: Acha que é possível (2) ?
+key: amor 30
+	decomp: *
+		reasmb: Tenha calma. Se você for muito apressado, pode estragar tudo. Você não concorda?
 key: sinto 5
 	decomp: sinto *
 		reasmb: Você realmente sente (1)?
@@ -51,7 +58,10 @@ key: coragem 11
 		reasmb: Claro que você tem!
  		reasmb: Acredite em si mesmo!
 		reasmb: Você consegue fazer o que quiser!
-		reasmb: FAÇA!
+key: medo 25
+	decomp: *
+		reasmb: Eu entendo. Mas saiba que as suas qualidades são muito maiores que os seus defeitos. Seja natural que tudo dará certo.
+		reasmb: Isso é comum, muitos sentem medo. Mesmo assim, não deixe-se levar por ele. Diga-me uma qualidade sua.
 key: digno 5
 	decomp: * digno *
 		reasmb: Claro que você é digno (2). Achei que você é uma pessoal amável.
@@ -65,15 +75,6 @@ key: terminou 3
 		reasmb: (1) terminou?
 		reasmb: Voce se sente triste?
 		reasmb: Sinto muito! O que você acha sobre isso?
-key: sim 2
-	decomp: sim
-		reasmb: Curioso, Conte-me mais.
-		reasmb: Muito interessante. Por favor, continue.
-		reasmb: Você está certo disso?
-key: não 2
-	decomp: não
-		reasmb: Conte-me mais sobre!
-		reasmb: Como você pode ter certeza disso?
 key: faço 5
 	decomp: faço
 		reasmb: Chame seu amor para sair.
@@ -82,32 +83,33 @@ key: faço 5
 key: gosta 5
 	decomp: * gosta
 		reasmb: Como você sabe que (1) sente isso?
-    reasmb: Pergunte a (1) sobre o que sente.
-		reasmb: Pense positivo, a vida é bela e (1) vai gostar de você!
+		reasmb: O que você fez para saber que (1) sente isso?
+key: gosto 1
+	decomp: *
+		reasmb: O que faz essa pessoa ser especial para você?
+		reasmb: Por que você acha essa pessoa especial?
 key: sofrer 7
 	decomp: sofrer
 		reasmb: Não se preocupe, esse sentimento não durará muito. Falo por experiência.
 key: ajudar 10
 	decomp: * ajudar *
 		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
- 		reasmb: Claro que irei ajudar, estou aqui pra isso.
+ 		reasmb: Claro que irei ajudar, estou aqui pra isso. Diga o que você acha que precisa.
 key: matar 20
 	decomp: matar
-		reasmb: Não faça isso, todos são dignos de amor! Vou lhe recomendar um psicólogo especialista nesse assunto.
+		reasmb: Não faça isso, todos são dignos de amor! Conheço alguém mais indicado para tratar desse assunto. Depois que acabarmos a conversa, lhe passo o contato dele.
 key: suicidar 20
 	decomp: suicidar
-		reasmb: Você veio até aqui porque não quer fazer isso. Conte-me mais, que irei ajudar você.
-		reasmb: Tenha calma. O que aconteceu exatamente?
+		reasmb: Você veio até aqui porque não quer se suicidar, tenho certeza disso. Explique seus motivos melhor, que irei ajudar você.
+		reasmb: Tenha calma. O que aconteceu exatamente para você pensar em suicído?
 key: apaixonado 20
 	decomp: apaixonado
-		reasmb: Isso pode ser bom pra vocês, mas você deve se certificar que do que sente.
-key: gosto 1
-	decomp: gosto
-		reasmb: O que faz ela ser especial para você?
-		reasmb: Por que você acha ele especial?
+		reasmb: Não seja apressado, sei que esse sentimento é forte, que você pode estragar tudo. Agora, fale sobre essa sua paixão.
+		reasmb: Esse é o sentimento muito intenso, mas você não deve o confundir com amor. Você entende isso?
+key: gosta 1
+	decomp: *
+		reasmb: Vá com calma. Você tem certeza desse sentimento?
 key: 0
 	decomp: *
-		reasmb: Certo, conte-me mais.
-		reasmb: Estou entendendo, fale mais sobre isso.
-		reasmb: Estou ouvindo, continue.
-		reasmb: Hmm. Fale-me mais.
+		reasmb: Compreendo. Fale-me sobre a relação que você tem com a sua pessoa especial?
+		reasmb: Que interessante. Mas me diga. Como você tem lidado com esses sentimentos?
