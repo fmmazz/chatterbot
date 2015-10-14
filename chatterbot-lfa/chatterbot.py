@@ -27,7 +27,6 @@ class ChatterBot:
 
     def start_chat(self):
         """Chat loop."""
-        self.key
         # Prints initial message
         self.print_simple_message(self.initial[0])
         # Dialog loop
