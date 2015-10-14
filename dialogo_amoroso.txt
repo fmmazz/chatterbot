@@ -10,6 +10,7 @@ pre: voce você
 post: sou é
 post: eu você
 post: meu seu
+post: me te
 synon: suicidar suicídio
 synon: sofrendo sofrimento sofrer
 synon: ajuda auxilio conselho
@@ -36,7 +37,7 @@ key: amo
 		reasmb: Você realmente ama (1)?
 		reasmb: Se você ama (1) por que não dizer a (1)?
 		reasmb: O amor é lindo, faça (1) saber dele.
-key: se
+key: se 10
 	decomp: * se *
 		reasmb: Você deseja que (2)?
 		reasmb: Sério? Se (2)?
@@ -53,7 +54,7 @@ key: coragem
  		reasmb: Acredite em si mesmo!
 		reasmb: Você consegue fazer o que quiser!
 		reasmb: FAÇA!
-key: digno
+key: digno 5
 	decomp: * digno *
 		reasmb: Claro que você é digno (2). Achei que você é uma pessoal amável.
 key: matar
@@ -82,14 +83,14 @@ key: não
 		reasmb: Hmmmm! Interessante!
 		reasmb: Nao me diga!!
 		reasmb: Verdade???
-key: faço
+key: faço 5
 	decomp: *
 		reasmb: Chame seu amor para sair.
 		reasmb: Convide para dar uma volta.
 		reasmb: O que você acha que deveria fazer?
     reasmb: Seria certo fazer o que você pensar em fazer?
  		reasmb: Você já pensou nas diferentes possibilidades?
-key: gosta
+key: gosta 5
 	decomp: * gosta
 		reasmb: Como você sabe que (1) sente isso?
     reasmb: Pergunte a (1) sobre seus sentimentos.
