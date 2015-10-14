@@ -46,7 +46,6 @@ class ChatterBot:
                 response = self.decomp_to_regex(matched_key, user_input)
                 reasbm_phr = self.sort_simple_message(matched_key[2])
                 final_phr = self.sub_reasbm(reasbm_phr, response)
-                #final_phr = self.post_proc(final_phr)
                 self.print_simple_message(final_phr)
 
     def define_weight_to_key(self):
@@ -100,9 +99,11 @@ class ChatterBot:
         return list_of_messages[random_index]
 
     def print_simple_message(self, message):
+        """Print the passed message and the bot name in front of it."""
         print(self.bot_name + ':', message)
 
     def get_user_input(self):
+        """Ask for the user input, showing the defined name for it."""
         user_input = input(self.user_name + ': ')
         user_input = user_input.lower()
         return user_input
@@ -120,11 +121,12 @@ class ChatterBot:
             return False
 
     def pre_proc(self, response):
-        """Do the pre processing of the response from the user."""
-        """Binds together relate words in pre list             """
-        """Separate in two lists(no graphic mark and with graphic mark"""
-        """Binds together in dict no graphic: with graphic"""
-        """Finds word and replace by your content in dict"""
+        """
+        Do the pre processing of the response from the user. Binds together
+        relate words in pre list. Separate in two lists (no graphic mark and
+        with graphic mark. Binds together in dict no graphic: with graphic.
+        Finds word and replace by your content in dict.
+        """
         pre_s = []
         pattern = re.compile("\\b(pre:)\\W", re.I)
         pre_s = [pattern.sub("", word) for word in self.pre]
@@ -134,11 +136,13 @@ class ChatterBot:
         return pattern.sub(lambda x: dic_pre[x.group()], response)
 
     def post_proc(self, response):
-        """Do the post processing of the response from the user."""
-        """Binds together relate words in post list             """
-        """Separate in two lists and bind together in dict"""
-        """dict => key: word to be replaced"""
-        """Finds word and replace by your content in dict"""
+        """
+        Do the post processing of the response from the user. Binds together
+        relate words in post list. Separate in two lists and bind together in
+        dict, like
+            dict => key: word to be replaced
+        Finds word and replace by your content in dict.
+        """
         post_s = []
         pattern = re.compile("\\b(post:)\\W", re.I)
         post_s = [pattern.sub("", word) for word in self.post]
@@ -148,7 +152,9 @@ class ChatterBot:
         return pattern.sub(lambda x: dic_post[x.group()], response)
 
     def decomp_to_regex(self, matched_key, response):
-        """Transforms the decomp item from the key in regex and separate in groups"""
+        """
+        Transform the decomp item from the key in regex and separate in groups.
+        """
         key = matched_key[0]
         decomp = matched_key[1]
         if decomp == '*':
@@ -162,7 +168,10 @@ class ChatterBot:
         return result
 
     def sub_reasbm(self, reasbm, decomp):
-        """Apply the post_proc in user answer and replace user content in reasbm if needed"""
+        """
+        Apply the post_proc in user answer and replace user content in reasbm
+        if needed.
+        """
         if re.search(r'\(1\)', reasbm):
 	        phrase = self.post_proc(decomp.group(1))
 	        return re.sub(r'\(1\)', phrase, reasbm)

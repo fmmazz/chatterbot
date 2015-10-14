@@ -1,4 +1,4 @@
-﻿initial: Olá! Meu nome é Eva. Sou conselheira amorosa ;). Conte-me, qual o problema?
+﻿initial: Olá! Meu nome é Eva. Sei que você veio até mim para falar de amor, não estou certa?. Então me fale, o que te aflinge?
 final: Adeus e boa sorte!
 quit: adeus
 quit: tchau
@@ -10,12 +10,16 @@ pre: voce você
 post: sou é
 post: eu você
 post: meu seu
+<<<<<<< HEAD
 post: me te
+=======
+synon: sofrer sofrendo sofrimento
+>>>>>>> origin/master
 synon: suicidar suicídio
-synon: sofrendo sofrimento sofrer
-synon: ajuda auxilio conselho
-synon: garoto guri ele
-synon: garota guria ela
+synon: matar morte morrer
+synon: ajudar ajuda conselho
+synon: ele menino garoto guri
+synon: ela menina garota guria
 key: obrigado
 	decomp: * obrigado *
 		reasmb: Não tem de que.
@@ -28,10 +32,7 @@ key: difícil
 key: desculpe
 	decomp: *
 		reasmb: Por favor, não se desculpe.
-		reasmb: Desculpas não são necessárias.
-		reasmb: Pare de pedir desculpas.
-		reasmb: Não peça desculpas, somente FAÇA.
-		reasmb: Pare de se desculpar e vá atrás do seu amor.
+		reasmb: Pare de se desculpar e vá atrás do seu amor!
 key: amo
 	decomp: amo *
 		reasmb: Você realmente ama (1)?
@@ -57,9 +58,6 @@ key: coragem
 key: digno 5
 	decomp: * digno *
 		reasmb: Claro que você é digno (2). Achei que você é uma pessoal amável.
-key: matar
-	decomp: * matar
-		reasmb: Não faça isso, todos são dignos de amor! Vou lhe recomendar um psicólogo especialista nesse assunto.
 key: sofrendo
 	decomp: * sofrendo *
 		reasmb: Por que esse sofrimento?
@@ -67,18 +65,17 @@ key: sofrendo
 		reasmb: O sofrimento é passageiro, eu garanto!
 key: terminou
 	decomp: * terminou *
-		reasmb: Nao me diga isso!!!
-		reasmb: (1) terminou??
-		reasmb: Nao fique assim, tudo passa :)
-		reasmb: Que droga hein! Voce ja tentou arrumar isso?
+		reasmb: (1) terminou?
+		reasmb: Voce se sente triste?
 		reasmb: Sinto muito! O que você acha sobre isso?
 key: sim
 	decomp: sim
-		reasmb: Me conte mais sobre!
-		reasmb: Hmmmm! Interessante isso hein!
-		reasmb: Serio???
+		reasmb: Curioso, Conte-me mais.
+		reasmb: Muito interessante. Por favor, continue.
+		reasmb: Você está certo disso?
 key: não
 	decomp: não
+<<<<<<< HEAD
 		reasmb: Conte-me mais sobre!
 		reasmb: Hmmmm! Interessante!
 		reasmb: Nao me diga!!
@@ -87,23 +84,43 @@ key: faço 5
 	decomp: *
 		reasmb: Chame seu amor para sair.
 		reasmb: Convide para dar uma volta.
+=======
+		reasmb: Conte-me mais sobre isso.
+		reasmb: Tem certeza?
+key: faço
+	decomp: faço
+		reasmb: Convide seu amor para sair.
+>>>>>>> origin/master
 		reasmb: O que você acha que deveria fazer?
-    reasmb: Seria certo fazer o que você pensar em fazer?
+    reasmb: Você acha correto fazer o que pensar em fazer?
  		reasmb: Você já pensou nas diferentes possibilidades?
 key: gosta 5
 	decomp: * gosta
 		reasmb: Como você sabe que (1) sente isso?
-    reasmb: Pergunte a (1) sobre seus sentimentos.
-		reasmb: Pense positivo, a vida é bela e (1) gosta de você!
-key: ajude
-	decomp: * ajude *
+    reasmb: Pergunte a (1) sobre o que sente.
+		reasmb: Pense positivo, a vida é bela e (1) vai gostar de você!
+key: sofrer
+	decomp: sofrer
+		reasmb: Não se preocupe, esse sentimento não durará muito. Falo por experiência.
+key: ajudar
+	decomp: * ajudar *
 		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
  		reasmb: Claro que irei ajudar, estou aqui pra isso.
     reasmb: Voce ja pensou como poderia resolver (2)?
+key: matar
+	decomp: matar
+		reasmb: Não faça isso, todos são dignos de amor! Vou lhe recomendar um psicólogo especialista nesse assunto.
+key: suicidar
+	decomp: suicidar
+		reasmb: Você veio até aqui porque não quer fazer isso. Conte-me mais, que irei ajudar você.
+		reasmb: Tenha calma. Explique-me melhor, você quer fazer isso por que?
+key: ela
+	decomp: ela
+		reasmb: O que faz ela ser especial para você?
+key: ele
+	decom: ele
+		reasmb: Por que você acha ele especial?
 key:
 	decomp: *
-		reasmb: Não posso te ajudar com isso!
-		reasmb: Acho que você está fugindo do assunto!
-		reasmb: Só posso te ajudar com assuntos amorosos =(
-		reasmb: Por favor, me conte sobre seus amores!
-		reasmb: Concentre-se no amor!
+		reasmb: Não compreendi ainda, conte-me mais.
+		reasmb: Não estou entendendo, fale mais sobre isso.
