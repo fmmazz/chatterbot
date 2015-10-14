@@ -24,14 +24,12 @@ class ChatterBot:
         self.post = post
         self.synon = synon
         self.key = key
+        self.keys_weight = self.define_weight_to_key()
 
     def start_chat(self):
         """Chat loop."""
-        keys_weights = {}
         # Prints initial message
         self.print_simple_message(self.initial[0])
-        # Gets all keys weights
-        keys_weights = self.define_weight_to_key()
         # Dialog loop
         while True:
             user_input = self.get_user_input()
@@ -43,7 +41,7 @@ class ChatterBot:
             else:
                 matched_key = \
                     self.select_key_that_matches_user_input(
-                        user_input, keys_weights)
+                        user_input)
                 response = self.decomp_to_regex(matched_key, user_input)
                 reasbm_phr = self.sort_simple_message(matched_key[2])
                 final_phr = self.sub_reasbm(reasbm_phr, response)
@@ -63,16 +61,16 @@ class ChatterBot:
             self.key[index][0] = phrase.group(1)
         return keys_weight
 
-    def select_key_that_matches_user_input(self, user_input, keys_weights):
+    def select_key_that_matches_user_input(self, user_input):
         """Match the user input with a key. Return the mached key."""
         keys_matched = []
         words_of_user_input = self.string_to_list_of_words(user_input)
         # Match the user input with a key
         for index in range(len(words_of_user_input)):
-            if words_of_user_input[index] in keys_weights:
+            if words_of_user_input[index] in self.keys_weight:
                 keys_matched.append(words_of_user_input[index])
         keys_matched = sorted(
-            keys_matched, key=lambda x: keys_weights[x], reverse=True)
+            keys_matched, key=lambda x: self.keys_weight[x], reverse=True)
 
         if not keys_matched:
             return (self.key[len(self.key) - 1])
