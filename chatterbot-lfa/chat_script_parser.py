@@ -73,7 +73,9 @@ def pop_content_of_key_entry_type(list_of_content):
             a_key = list_of_content.pop(i)
             a_key = a_key.split(":", 1)[1]
             a_key = a_key.strip()
-            a_key_and_its_values.append(a_key)
+            a_key = a_key.split()
+            a_key_and_its_values.append(a_key[0])
+            a_key_and_its_values.append(int(a_key[1]))
             # Get all the 'decomp' markups and its childs
             a_decomp_and_its_values = []
             while (list_of_content and
