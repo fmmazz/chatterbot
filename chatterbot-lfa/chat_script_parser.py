@@ -9,8 +9,9 @@ def main(chat_script_path):
     except IOError:
         raise
     else:
-        list_of_content = parse_chat_content(read_content)
         # Parses the content
+        list_of_content = parse_chat_content(read_content)
+        # Split the content in variables
         initial = pop_content_given_a_simple_entry_type(list_of_content,
                                                         'initial')
         final = pop_content_given_a_simple_entry_type(list_of_content, 'final')
@@ -19,14 +20,6 @@ def main(chat_script_path):
         post = pop_content_given_a_simple_entry_type(list_of_content, 'post')
         synon = pop_content_given_a_simple_entry_type(list_of_content, 'synon')
         key = pop_content_of_key_entry_type(list_of_content)
-        # Removes label from the first string
-        initial = remove_label_from_simple_entry_types(initial)
-        final = remove_label_from_simple_entry_types(final)
-        quit = remove_label_from_simple_entry_types(quit)
-        pre = remove_label_from_simple_entry_types(pre)
-        post = remove_label_from_simple_entry_types(post)
-        synon = remove_label_from_simple_entry_types(synon)
-        key = format_key_entry_type(key)
         return initial, final, quit, pre, post, synon, key
 
 
@@ -57,7 +50,10 @@ def pop_content_given_a_simple_entry_type(list_of_content, entry_type):
     i = 0
     while i < len(list_of_content):
         if list_of_content[i].startswith(entry_type):
-            result.append(list_of_content[i])
+            content = list_of_content[i]
+            content = content.split(":", 1)[1]
+            content = content.strip()
+            result.append(content)
             list_of_content.pop(i)
         else:
             i += 1
@@ -68,65 +64,39 @@ def pop_content_of_key_entry_type(list_of_content):
     """Return a list with sublists composed by 'key', 'decomp' and 'reasmb'."""
     # Iterates over the list of content, adding the 'key' entry type and
     # its childs to an list
-    list_of_keys = []
+    result = []
     i = 0
     while i < len(list_of_content):
         a_key_and_its_values = []
         # Get all the 'keys' markups and its childs
         if list_of_content[i].startswith('key'):
-            a_key_and_its_values.append(list_of_content[i])
-            list_of_content.pop(i)
+            a_key = list_of_content.pop(i)
+            a_key = a_key.split(":", 1)[1]
+            a_key = a_key.strip()
+            a_key_and_its_values.append(a_key)
             # Get all the 'decomp' markups and its childs
+            a_decomp_and_its_values = []
             while (list_of_content and
                    list_of_content[i].startswith('decomp')):
-                a_key_and_its_values.append(list_of_content[i])
-                list_of_content.pop(i)
+                a_decomp = list_of_content.pop(i)
+                a_decomp = a_decomp.split(":", 1)[1]
+                a_decomp = a_decomp.strip()
+                a_decomp_and_its_values.append(a_decomp)
                 # Get all the 'reasmb' markups
+                a_reasmb_and_its_values = []
                 while (list_of_content and
                        list_of_content[i].startswith('reasmb')):
-                    a_key_and_its_values.append(list_of_content[i])
-                    list_of_content.pop(i)
-            # Append the popped content to the final list
-            list_of_keys.append(a_key_and_its_values)
+                    a_reasmb = list_of_content.pop(i)
+                    a_reasmb = a_reasmb.split(":", 1)[1]
+                    a_reasmb = a_reasmb.strip()
+                    a_reasmb_and_its_values.append(a_reasmb)
+                # Add all 'reasmb' markups to the relative decomp
+                a_decomp_and_its_values.append(a_reasmb_and_its_values)
+            # Add all the 'decomp' makrups to the relative key
+            a_key_and_its_values.append(a_decomp_and_its_values)
+            # Append the gathered content to the list
+            result.append(a_key_and_its_values)
         # Only increments the index i if doesn't found a key
         else:
             i += 1
-    return list_of_keys
-
-
-def remove_label_from_simple_entry_types(entry_type):
-    """Strip the entry type label from the list item."""
-    result = []
-    for item in entry_type:
-        # Splits the item in label and content and append only the content
-        item = item.split(":", 1)[1]
-        item = item.lstrip()
-        result.append(item)
-    return result
-
-
-def format_key_entry_type(key_entry_type):
-    """Format the string, returning [[key], [decomp], [reasmb, not_used]]."""
-    result = []
-    for entry in key_entry_type:
-        formated_entry = []
-        # Append the key related string
-        key = entry[0]
-        key = key.split(":", 1)[1]
-        key = key.lstrip()
-        formated_entry.append(key)
-        # Append the decomp related string
-        decomp = entry[1]
-        decomp = decomp.split(":", 1)[1]
-        decomp = decomp.lstrip()
-        formated_entry.append(decomp)
-        # Append the list of reasmb related strings
-        formated_reasmb_entry = []
-        for i in range(2, len(entry)):
-            reasmb = entry[i].split(":", 1)[1]
-            reasmb = reasmb.lstrip()
-            formated_reasmb_entry.append([reasmb, False])
-        formated_entry.append(formated_reasmb_entry)
-        # Append all the items in order to a sublist
-        result.append(formated_entry)
     return result
