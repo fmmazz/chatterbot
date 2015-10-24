@@ -95,7 +95,7 @@ def pop_content_of_key_entry_type(list_of_content):
                     a_reasmb = list_of_content.pop(i)
                     a_reasmb = a_reasmb.split(":", 1)[1]
                     a_reasmb = a_reasmb.strip()
-                    a_reasmb_and_its_values.append(a_reasmb)
+                    a_reasmb_and_its_values.append([a_reasmb, False])
                 # Add all 'reasmb' markups to the relative decomp
                 a_decomp_and_its_values.append(a_reasmb_and_its_values)
             # Add all the 'decomp' makrups to the relative key
