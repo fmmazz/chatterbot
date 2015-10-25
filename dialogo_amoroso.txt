@@ -7,6 +7,10 @@ pre: nao não
 pre: ate até
 pre: suicidio suicídio
 pre: voce você
+pre: faco faço
+pre: dificil difícil
+pre: facil fácil
+pre: ola olá
 post: sou é
 post: eu você
 post: meu seu
@@ -19,6 +23,38 @@ synon: ele menino garoto guri
 synon: ela menina garota guria
 synon: teste tentativa trial
 synon: everyone everybody nobody noone
+synon: olá oi saudações
+synon: linda lindo inteligente charmosa charmoso querido querida maravilhosa maravilhoso
+synon: recusar fora rejeitar
+key: olá 20
+	decomp: * @olá *
+		reasmb: Olá, como vai você?
+		reasmb: Tudo bem contigo?
+		reasmb: Seja bem-vindo!
+key: sim 10
+	decomp: * sim *
+		reasmb: Verdade?
+		reasmb: Me conte mais sobre isso!
+		reasmb: Não me diga?
+key: não 10
+	decomp: * não *
+		reasmb: Sério?
+		reasmb: Me fale mais sobre isso!
+		reasmb: Qual seu sentimento em relação a isso?
+key: linda 20
+	decomp: * @linda *
+		reasmb: Sério? Que amor!!
+		reasmb: Seu amor parece combinar com você!
+		reasmb: Você é muito amável! Tente falar com o seu amor de novo!
+		reasmb: Você realmente está amando!
+		reasmb: O seu amor precisa saber que você acha isso!!!
+		reasmb: Conte tudo isso para o seu amor!!!
+key: recusar 20
+	decomp: * @recusar *
+		reasmb: Seu amor não faria isso com você!!
+		reasmb: Não custa tentar não é mesmo? ;) 
+		reasmb: Não deixe que o medo de errar impeça que você tente!
+		reasmb: O máximo que você irá receber é um não, não é mesmo? \_(ツ)_/
 key: obrigado 35
 	decomp: * obrigado *
 		reasmb: Não tem de que.
@@ -28,9 +64,11 @@ key: difícil 2
 	decomp: * difícil
 		reasmb: Você já tentou fazer isso?
    	reasmb: Não é assim tão difícil. Você precisa se esforçar um pouco mais.
-key: fácil 2
+key: fácil 15
 	decomp: * fácil
-		reasmb: Como você que é assim?
+		reasmb: E alguém disse que seria?
+		reasmb: A vida não é fácil amigo! =/
+		reasmb: Eu sei, por isso que você precisa enfrentar isso!
 key: desculpe 20
 	decomp: *
 		reasmb: Por favor, não se desculpe.
@@ -64,7 +102,7 @@ key: medo 25
 	decomp: *
 		reasmb: Eu entendo. Mas saiba que as suas qualidades são muito maiores que os seus defeitos. Seja natural que tudo dará certo.
 		reasmb: Isso é comum, muitos sentem medo. Mesmo assim, não deixe-se levar por ele. Diga-me uma qualidade sua.
-key: digno 5
+key: digno 11
 	decomp: * digno *
 		reasmb: Claro que você é digno (2). Achei que você é uma pessoal amável.
 key: sofrendo 15
@@ -77,7 +115,7 @@ key: terminou 3
 		reasmb: (1) terminou?
 		reasmb: Voce se sente triste?
 		reasmb: Sinto muito! O que você acha sobre isso?
-key: faço 5
+key: faço 15
 	decomp: * faço *
 		reasmb: Chame seu amor para sair.
 		reasmb: Convide para dar uma volta.
