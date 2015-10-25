@@ -24,12 +24,13 @@ class ChatterBot:
         self.post = post
         self.synon = synon
         self.key = key
-        self.keys_weight = self.define_weight_to_key()
+        self.dict_of_synon = self.synon_to_dict()
 
     def start_chat(self):
         """Chat loop."""
         # Prints initial message
         self.print_simple_message(self.initial[0])
+        self.key = sorted(self.key, key=lambda x: x[1], reverse=True)
         # Dialog loop
         while True:
             user_input = self.get_user_input()
@@ -39,47 +40,79 @@ class ChatterBot:
                 self.print_simple_message(final_phr)
                 break
             else:
-                matched_key = self.select_key_that_matches_user_input(
-                    user_input)
-                response = self.decomp_to_regex(matched_key,
-                                                user_input)
-                reasbm_phr = self.pick_a_reasmb_phrase(matched_key[2])
-                final_phr = self.sub_reasbm(reasbm_phr, response)
+                reasbm_list, decomp_user_input = self.search_keys(user_input)
+                reasbm_phr = self.pick_a_reasmb_phrase(reasbm_list)
+                final_phr = self.sub_reasbm(reasbm_phr, decomp_user_input)
                 self.print_simple_message(final_phr)
 
-    def define_weight_to_key(self):
-        keys_weight = {}
-        for index in range(len(self.key)):
-            some_key = self.key[index]
-            value_of_the_key = some_key[0]
-            phrase = re.search(r'(\w*)\s*(\d*)', value_of_the_key)
-            if not phrase.group(2):
-                keys_weight[phrase.group(1)] = 0
-            else:
-                value = int(phrase.group(2))
-                keys_weight[phrase.group(1)] = value
-            self.key[index][0] = phrase.group(1)
-        return keys_weight
+    def synon_to_dict(self):
+        '''
+        Function to put synon to a dict with key as the word found in decomp
+        '''
+        syn_dict = {}
+        list_of_syn = []
+        for i in range(len(self.key)):
+            for j in range(0, len(self.key[i][2]), 2):
+                if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
+                    word_syn = re.search(r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                elif re.search(r'\@\w+\s\*', self.key[i][2][j]):
+                    word_syn = re.search(r'\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                elif re.search(r'\*\s\@\w+', self.key[i][2][j]):
+                    word_syn = re.search(r'\*\s\@(\w+)', self.key[i][2][j]).group(1)
+                else:
+                    break
 
-    def select_key_that_matches_user_input(self, user_input):
-        """Match the user input with a key. Return the mached key."""
-        keys_matched = []
-        words_of_user_input = self.string_to_list_of_words(user_input)
-        # Match the user input with a key
-        for index in range(len(words_of_user_input)):
-            if words_of_user_input[index] in self.keys_weight:
-                keys_matched.append(words_of_user_input[index])
-        keys_matched = sorted(
-            keys_matched, key=lambda x: self.keys_weight[x], reverse=True)
+                for w in range(len(self.synon)):
+                     if word_syn in self.synon[w]:
+                        list_of_syn = self.synon[w].split(' ')
+                        syn_dict[word_syn] = list_of_syn
+        return syn_dict
 
-        if not keys_matched:
-            return (self.key[len(self.key) - 1])
-        else:
-            index = 0
-            for index in range(len(self.key)):
-                k_word = re.search(r'(\w*)', self.key[index][0])
-                if keys_matched[0] == k_word.group(1):
-                    return self.key[index]
+
+    def search_keys(self, user_input):
+        for i in range(len(self.key)):
+            for j in range(0, len(self.key[i][2]), 2):
+
+                if re.search(r'.*\@.*', self.key[i][2][j]):
+                    if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
+                        syn_to_search= re.search(r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                    elif re.search(r'\@\w+\s\*', self.key[i][2][j]):
+                        syn_to_search = re.search(r'\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                    elif re.search(r'\*\s\@\w+', self.key[i][2][j]):
+                        syn_to_search = re.search(r'\*\s\@(\w+)', self.key[i][2][j]).group(1)
+
+                    syn_to_compare = self.dict_of_synon[syn_to_search]
+                    for w in range(len(self.dict_of_synon[syn_to_search])):
+                        if syn_to_compare[w] in user_input:
+                            patt = syn_to_compare[w]
+                            result = re.search(r'(.*)\s*(%s)\s*(.*)' % patt, user_input)
+                            return self.key[i][2][j+1], result
+
+                if self.key[i][2][j] == '*':
+                    if self.key[i][0] == '*' or self.key[i][0] in user_input:
+                        result = re.search(r'()()', user_input)
+                        return self.key[i][2][j+1], result
+
+                elif re.search(r'\*\s.*\s\*', self.key[i][2][j]):
+
+                    patt = re.search(r'\*\s(.*)\s\*', self.key[i][2][j]).group(1)
+                    if re.search(r'.*\s*%s\s*.*' % patt, user_input):
+                        result = re.search(r'(.*)\s*%s\s*(.*)' % patt, user_input)
+                        return self.key[i][2][j+1], result
+
+                elif re.search(r'.*\s\*', self.key[i][2][j]):
+
+                    patt = re.search(r'(.*)\s\*', self.key[i][2][j]).group(1)
+                    if re.search(r'%s\s*.*' % patt, user_input):
+                        result = re.search(r'%s\s*(.*)' % patt, user_input)
+                        return self.key[i][2][j+1], result
+
+                else:
+
+                    patt = re.search(r'\*\s(.*)', self.key[i][2][j]).group(1)
+                    if re.search(r'.*\s*%s' % patt, user_input):
+                        result = re.search(r'(.*)\s*%s' % patt, user_input)
+                        return self.key[i][2][j+1], result
 
     def string_to_list_of_words(self, user_string):
         """Split the user input in words, save in list."""
@@ -170,22 +203,6 @@ class ChatterBot:
         pattern = re.compile(r'\b(' + '|'.join(dic_post.keys()) + r')\b')
         return pattern.sub(lambda x: dic_post[x.group()], response)
 
-    def decomp_to_regex(self, matched_key, response):
-        """
-        Transform the decomp item from the key in regex and separate in groups.
-        """
-        key = matched_key[0]
-        decomp = matched_key[1]
-        if decomp == '*':
-            result = re.search(r'()()', response)
-        elif re.search(r'\*\s%s\s\*' % key, decomp):
-            result = re.search(r'(.*)\s*%s\s*(.*)' % key, response)
-        elif re.search(r'%s\s\*' % key, decomp):
-            result = re.search(r'%s\s*(.*)' % key, response)
-        else:
-            result = re.search(r'(.*)\s*%s' % key, response)
-        return result
-
     def sub_reasbm(self, reasbm, decomp):
         """
         Apply the post_proc in user answer and replace user content in reasbm
@@ -197,5 +214,8 @@ class ChatterBot:
         elif re.search(r'\(2\)', reasbm):
             phrase = self.post_proc(decomp.group(2))
             return re.sub(r'\(2\)', phrase, reasbm)
+        elif re.search(r'\(3\)', reasbm):
+            phrase = self.post_proc(decomp.group(3))
+            return re.sub(r'\(3\)', phrase, reasbm)
         else:
             return reasbm

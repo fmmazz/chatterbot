@@ -1,4 +1,4 @@
-﻿initial: Olá! Meu nome é Eva. Sei que você veio até mim para falar de amor, não estou certa?. Então me fale, o que te aflinge?
+initial: Olá! Meu nome é Eva. Sei que você veio até mim para falar de amor, não estou certa?. Então me fale, o que te aflinge?
 final: Adeus e boa sorte!
 quit: adeus
 quit: tchau
@@ -17,6 +17,8 @@ synon: matar morte morrer
 synon: ajudar ajuda conselho
 synon: ele menino garoto guri
 synon: ela menina garota guria
+synon: teste tentativa trial
+synon: everyone everybody nobody noone
 key: obrigado 35
 	decomp: * obrigado *
 		reasmb: Não tem de que.
@@ -37,7 +39,7 @@ key: desculpas 10
 	decomp: *
 		reasmb: Tenha paciência, essa pessoa pode estar confusa sobre o que sente.
 key: ama 31
-	decomp: ama
+	decomp: * ama
 		reasmb: Como você tem certeza disso? Já perguntou para essa pessoa?
 		reasmb: E o que você pode fazer a respeito?
 key: amo 30
@@ -76,7 +78,7 @@ key: terminou 3
 		reasmb: Voce se sente triste?
 		reasmb: Sinto muito! O que você acha sobre isso?
 key: faço 5
-	decomp: faço
+	decomp: * faço *
 		reasmb: Chame seu amor para sair.
 		reasmb: Convide para dar uma volta.
 		reasmb: Seja sincero e seja insistente.
@@ -89,26 +91,37 @@ key: gosto 1
 		reasmb: O que faz essa pessoa ser especial para você?
 		reasmb: Por que você acha essa pessoa especial?
 key: sofrer 7
-	decomp: sofrer
+	decomp: * sofrer *
 		reasmb: Não se preocupe, esse sentimento não durará muito. Falo por experiência.
 key: ajudar 10
 	decomp: * ajudar *
 		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
  		reasmb: Claro que irei ajudar, estou aqui pra isso. Diga o que você acha que precisa.
 key: matar 20
-	decomp: matar
+	decomp: * matar *
 		reasmb: Não faça isso, todos são dignos de amor! Conheço alguém mais indicado para tratar desse assunto. Depois que acabarmos a conversa, lhe passo o contato dele.
 key: suicidar 20
-	decomp: suicidar
+	decomp: * suicidar *
 		reasmb: Você veio até aqui porque não quer se suicidar, tenho certeza disso. Explique seus motivos melhor, que irei ajudar você.
-		reasmb: Tenha calma. O que aconteceu exatamente para você pensar em suicído?
+		reasmb: Tenha calma. O que aconteceu exatamente para você pensar em suicídio?
 key: apaixonado 20
-	decomp: apaixonado
+	decomp: * apaixonado *
 		reasmb: Não seja apressado, sei que esse sentimento é forte, que você pode estragar tudo. Agora, fale sobre essa sua paixão.
 		reasmb: Esse é o sentimento muito intenso, mas você não deve o confundir com amor. Você entende isso?
-key: gosta 1
+key: gostar 7
+	decomp: * gostar dele *
+		reasmb: aaaaaaa
+	decomp: * gostar de bla *
+		reasmb: balblóblalb
 	decomp: *
 		reasmb: Vá com calma. Você tem certeza desse sentimento?
+key: teste 3
+	decomp: * @teste
+		reasmb: Isso é um teste de sinonimo
+key: everyone 2
+  	decomp: * @everyone *
+    		reasmb: Really, (2) ?
+   		reasmb: Surely not (3).
 key: 0
 	decomp: *
 		reasmb: Compreendo. Fale-me sobre a relação que você tem com a sua pessoa especial?
