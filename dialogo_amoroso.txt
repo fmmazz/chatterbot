@@ -1,4 +1,4 @@
-initial: Olá! Meu nome é Eva. Sei que você veio até mim para falar de amor, não estou certa?. Então me fale, o que te aflinge?
+initial: Olá! Meu nome é Eva. Fale-me sobre seus problemas amorosos!!
 final: Adeus e boa sorte!
 quit: adeus
 quit: tchau
@@ -18,14 +18,15 @@ post: me te
 synon: sofrer sofrendo sofrimento
 synon: suicidar suicídio
 synon: matar morte morrer
-synon: ajudar ajuda conselho
-synon: ele menino garoto guri
-synon: ela menina garota guria
-synon: teste tentativa trial
-synon: everyone everybody nobody noone
+synon: ajudar ajuda conselho ajude auxilie
 synon: olá oi saudações
 synon: linda lindo inteligente charmosa charmoso querido querida maravilhosa maravilhoso
 synon: recusar fora rejeitar
+synon: medo vergonha tímida timidez
+synon: amigo amiga colega parceiro parceira vizinho vizinha
+synon: mensagem sms whats ligação email mensagens ligações emails
+synon: fugir escapar despistar
+synon: insistir insistindo incomodando
 key: olá 20
 	decomp: * @olá *
 		reasmb: Olá, como vai você?
@@ -41,6 +42,12 @@ key: não 10
 		reasmb: Sério?
 		reasmb: Me fale mais sobre isso!
 		reasmb: Qual seu sentimento em relação a isso?
+key: amigo 15
+	decomp: * @amigo *
+		reasmb: De onde vocês se conhecem??
+		reasmb: E ele sabe que você quer continuar com a relação como está?
+		reasmb: Conte seus sentimentos pra ele!
+		reasmb: Tão longe, mas tão perto, não hahaha? Conte tudo pra ele!
 key: linda 20
 	decomp: * @linda *
 		reasmb: Sério? Que amor!!
@@ -49,6 +56,24 @@ key: linda 20
 		reasmb: Você realmente está amando!
 		reasmb: O seu amor precisa saber que você acha isso!!!
 		reasmb: Conte tudo isso para o seu amor!!!
+key: mensagem 20
+	decomp: * @mensagem *
+		reasmb: Opa! Sinal de alerta! Ele pode estar confuso sobre os sentimentos!
+		reasmb: Deve estar sem bateria! Espere um pouco! ;)
+		reasmb: Ele pode não ter visto, relaxe!
+		reasmb: Será que ele está preparado para o que você quer?
+key: fugir 15
+	decomp: * @fugir *
+		reasmb: Diga que não quer nada!
+		reasmb: Converse com ele e explique a situação!
+		reasmb: Despiste ele!
+		reasmb: Ignore suas mensagens!
+		reasmb: Deixe ele no vácuo! ;)
+key: insistir 14
+	decomp: * @insistir *
+		reasmb: Converse com ele!
+		reasmb: Explique sua situação para ele!
+		reasmb: Uma conversa é sempre bom para os dois lados!
 key: recusar 20
 	decomp: * @recusar *
 		reasmb: Seu amor não faria isso com você!!
@@ -99,7 +124,7 @@ key: coragem 11
  		reasmb: Acredite em si mesmo!
 		reasmb: Você consegue fazer o que quiser!
 key: medo 25
-	decomp: *
+	decomp: * @medo *
 		reasmb: Eu entendo. Mas saiba que as suas qualidades são muito maiores que os seus defeitos. Seja natural que tudo dará certo.
 		reasmb: Isso é comum, muitos sentem medo. Mesmo assim, não deixe-se levar por ele. Diga-me uma qualidade sua.
 key: digno 11
@@ -129,17 +154,17 @@ key: gosto 1
 		reasmb: O que faz essa pessoa ser especial para você?
 		reasmb: Por que você acha essa pessoa especial?
 key: sofrer 7
-	decomp: * sofrer *
+	decomp: * @sofrer *
 		reasmb: Não se preocupe, esse sentimento não durará muito. Falo por experiência.
 key: ajudar 10
-	decomp: * ajudar *
+	decomp: * @ajudar *
 		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
  		reasmb: Claro que irei ajudar, estou aqui pra isso. Diga o que você acha que precisa.
 key: matar 20
-	decomp: * matar *
+	decomp: * @matar *
 		reasmb: Não faça isso, todos são dignos de amor! Conheço alguém mais indicado para tratar desse assunto. Depois que acabarmos a conversa, lhe passo o contato dele.
 key: suicidar 20
-	decomp: * suicidar *
+	decomp: * @suicidar *
 		reasmb: Você veio até aqui porque não quer se suicidar, tenho certeza disso. Explique seus motivos melhor, que irei ajudar você.
 		reasmb: Tenha calma. O que aconteceu exatamente para você pensar em suicídio?
 key: apaixonado 20
@@ -153,14 +178,9 @@ key: gostar 7
 		reasmb: balblóblalb
 	decomp: *
 		reasmb: Vá com calma. Você tem certeza desse sentimento?
-key: teste 3
-	decomp: * @teste
-		reasmb: Isso é um teste de sinonimo
-key: everyone 2
-  	decomp: * @everyone *
-    		reasmb: Really, (2) ?
-   		reasmb: Surely not (3).
-key: 0
+key:
 	decomp: *
 		reasmb: Compreendo. Fale-me sobre a relação que você tem com a sua pessoa especial?
 		reasmb: Que interessante. Mas me diga. Como você tem lidado com esses sentimentos?
+		reasmb: Interessante, conte-me mais!
+		reasmb: Conte-me tudo!!

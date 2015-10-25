@@ -74,7 +74,10 @@ def pop_content_of_key_entry_type(list_of_content):
             a_key = a_key.split(":", 1)[1]
             a_key = a_key.strip()
             a_key = a_key.split()
-            if a_key[0].isdigit():
+            if not a_key:
+                a_key_and_its_values.append('*')
+                a_key_and_its_values.append(int('0'))
+            elif a_key[0].isdigit():
                 a_key_and_its_values.append('*')
                 a_key_and_its_values.append(int(a_key[0]))
             else:
