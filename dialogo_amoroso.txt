@@ -15,142 +15,145 @@ post: sou é
 post: eu você
 post: meu seu
 post: me te
+post: amo ama
 synon: sofrer sofrendo sofrimento
 synon: suicidar suicídio
 synon: matar morte morrer
 synon: ajudar ajuda conselho ajude auxilie
 synon: olá oi saudações
 synon: linda lindo inteligente charmosa charmoso querido querida maravilhosa maravilhoso
-synon: recusar fora rejeitar
+synon: recusar rejeitar
+synon: recusou rejeitou
 synon: medo vergonha tímida tímido timidez
 synon: amigo amiga colega parceiro parceira vizinho vizinha
 synon: mensagem mensagens ligação ligações email emails recado recados
-synon: insistir insistindo incomodando
-key: olá 20
-	decomp: * @olá *
-		reasmb: Olá! Por favor, me conte, qual é o problema com a pessoa de quem você gosta?
-		reasmb: Olá, seja bem-vindo! Me conte, qual é o problema com a pessoa de quem você gosta?
-key: amigo 15
-	decomp: * @amigo *
-		reasmb: Você tem sorte de serem próximos. O que você pensa em fazer a respeito?
-		reasmb: Ótimo! O que você fará para aproximar-se?
-key: linda 5
-	decomp: * @linda *
-		reasmb: Que bom que você acha isso. Mas já procurou conhecer essa pessoa melhor?
-		reasmb: Isso é bom! Agora, você precisa conhecer essa pessoa melhor. Como acha que fará isso?
-key: mensagem 20
-	decomp: * @mensagem *
-		reasmb: Se essa pessoa é especial, certamente irá responder, espere. Agora, me diga, quais são os seus planos?
-		reasmb: Tenha paciência. Se ela não responder dentro de alguns dias, mande outra. Ela perceberá suas intenções. Além disso, o que mais você tem a me dizer?
-key: insistir 14
-	decomp: * @insistir *
-		reasmb: Uma conversa é sempre bom para os dois lados!
-key: recusar 20
-	decomp: * @recusar *
-		reasmb: Seu amor não faria isso com você!!
-		reasmb: Não custa tentar não é mesmo? ;)
-		reasmb: Não deixe que o medo de errar impeça que você tente!
-		reasmb: O máximo que você irá receber é um não, não é mesmo? \_(ツ)_/
-key: obrigado 35
-	decomp: * obrigado *
-		reasmb: Não tem de que.
-		reasmb: De nada.
-		reasmb: Estou sempre aqui para te ajudar.
-key: difícil 2
-	decomp: * difícil
-		reasmb: Você já tentou fazer isso?
-   	reasmb: Não é assim tão difícil. Você precisa se esforçar um pouco mais.
-key: fácil 15
-	decomp: * fácil
-		reasmb: E alguém disse que seria?
-		reasmb: A vida não é fácil amigo! =/
-		reasmb: Eu sei, por isso que você precisa enfrentar isso!
-key: desculpe 20
-	decomp: *
-		reasmb: Por favor, não se desculpe.
-		reasmb: Pare de se desculpar e vá atrás do seu amor!
-key: desculpas 10
-	decomp: *
-		reasmb: Tenha paciência, essa pessoa pode estar confusa sobre o que sente.
-key: ama 31
-	decomp: * ama
-		reasmb: Como você tem certeza disso? Já perguntou para essa pessoa?
-		reasmb: E o que você pode fazer a respeito?
-key: amo 30
-	decomp: amo *
-		reasmb: Por que você tem certeza que sente isso?
-		reasmb: Se você ama (1) por que não dizer a (1)?
-key: amor 30
-	decomp: *
-		reasmb: Tenha calma. Se você for muito apressado, pode estragar tudo. Você não concorda?
-key: sinto 5
-	decomp: sinto *
-		reasmb: Você realmente sente (1)?
-		reasmb: O que você acha sobre sentir (1) ?
-    reasmb: Esse sentimento é verdadeiro?
-    reasmb: Por que você sente isso?
-key: coragem 11
-	decomp: * coragem *
-		reasmb: Claro que você tem!
- 		reasmb: Acredite em si mesmo!
-		reasmb: Você consegue fazer o que quiser!
-key: medo 25
-	decomp: * @medo *
-		reasmb: Eu entendo. Mas saiba que as suas qualidades são muito maiores que os seus defeitos. Seja natural que tudo dará certo.
-		reasmb: Isso é comum, muitos sentem medo. Mesmo assim, não deixe-se levar por ele. Diga-me uma qualidade sua.
-key: digno 11
-	decomp: * digno *
-		reasmb: Claro que você é digno (2). Achei que você é uma pessoal amável.
-key: sofrendo 15
-	decomp: * sofrendo *
-		reasmb: Por que esse sofrimento?
-		reasmb: Esse sofrimento faz sentido?
-		reasmb: O sofrimento é passageiro, eu garanto!
-key: terminou 3
-	decomp: * terminou *
-		reasmb: (1) terminou?
-		reasmb: Voce se sente triste?
-		reasmb: Sinto muito! O que você acha sobre isso?
-key: faço 15
-	decomp: * faço *
-		reasmb: Chame seu amor para sair.
-		reasmb: Convide para dar uma volta.
-		reasmb: Seja sincero e seja insistente.
-key: gosta 5
-	decomp: * gosta
-		reasmb: Como você sabe que (1) sente isso?
-		reasmb: O que você fez para saber que (1) sente isso?
-key: gosto 1
-	decomp: *
-		reasmb: Certo, e o que faz essa pessoa ser especial para você?
-		reasmb: E por que você acha essa pessoa especial?
-key: sofrer 7
-	decomp: * @sofrer *
-		reasmb: Não se preocupe, esse sentimento não durará muito. Falo por experiência.
-key: ajudar 10
-	decomp: * @ajudar *
-		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
- 		reasmb: Claro que irei ajudar, estou aqui pra isso. Diga o que você acha que precisa.
-key: matar 20
-	decomp: * @matar *
-		reasmb: Não faça isso, todos são dignos de amor! Conheço alguém mais indicado para tratar desse assunto. Depois que acabarmos a conversa, lhe passo o contato dele.
-key: suicidar 20
-	decomp: * @suicidar *
-		reasmb: Você veio até aqui porque não quer se suicidar, tenho certeza disso. Explique seus motivos melhor, que irei ajudar você.
-		reasmb: Tenha calma. O que aconteceu exatamente para você pensar em suicídio?
-key: apaixonado 20
-	decomp: * apaixonado *
-		reasmb: Não seja apressado, sei que esse sentimento é forte, que você pode estragar tudo. Agora, fale sobre essa sua paixão.
-		reasmb: Esse é o sentimento muito intenso, mas você não deve o confundir com amor. Você entende isso?
-key: gosta 15
-	decomp: * não gosta de mim
-		reasmb: Como você pode ter certeza que (1) não gosta de você?
-	decomp: * gosta *
-		reasmb: Como você sabe? Já perguntou a ela?
-		reasmb: Vá com calma. Você tem certeza desse sentimento?
+synon: desculpa desculpas
+synon: o a
+synon: apaixonado paixão
 key:
 	decomp: *
 		reasmb: Compreendo. Fale-me sobre isso.
 		reasmb: Que interessante. Por favor, continue.
 		reasmb: Estou ouvindo, continue.
 		reasmb: Certo, e o que mais?
+key: olá 5
+	decomp: * @olá *
+		reasmb: Olá! Por favor, me conte, qual é o problema com a pessoa de quem você gosta?
+		reasmb: Olá, seja bem-vindo! Me conte, qual é o problema com a pessoa de quem você gosta?
+key: amigo 15
+	decomp: * melhor @amigo *
+		reasmb: E se não der certo, você acha que pode perder a amizade?
+	decomp: * @amigo *
+		reasmb: Você tem sorte de serem próximos. O que você pensa em fazer a respeito?
+		reasmb: Ótimo! E o que você pensa em fazer para aproximar-se dessa pessoa?
+key: linda 5
+	decomp: * @linda *
+		reasmb: Que bom que você acha isso. Mas já procurou conhecer essa pessoa melhor?
+		reasmb: Isso é bom! Agora, você precisa conhecer essa pessoa melhor. Como acha que fará isso?
+key: mensagem 20
+	decomp: * @mensagem *
+		reasmb: Se essa pessoa é especial, certamente irá responder; espere. Agora, me diga, quais são os seus planos?
+		reasmb: Tenha paciência. Se ela não responder dentro de alguns dias, mande outra. Ela perceberá suas intenções. Além disso, o que mais você tem a me dizer?
+key: recusar 20
+	decomp: * @recusar *
+		reasmb: Não deixe que o medo te impeça de viver esse amor. Fale a ela o que sente!
+		reasmb: Não custa tentar, não é mesmo?
+key: obrigado 35
+	decomp: *
+		reasmb: Não tem de que.
+		reasmb: De nada.
+		reasmb: Estou sempre aqui para te ajudar.
+key: difícil 5
+	decomp: * difícil *
+		reasmb: Não é assim tão difícil. Você deve acreditar em si. Me diga, o que fará a respeito?
+		reasmb: Como você sabe, já tentou fazer isso?
+key: desculpe 20
+	decomp: *
+		reasmb: Não há por que pedir desculpas. Por favor, continue a sua história.
+		reasmb: Por favor, não se desculpe e continue a me contar.
+key: desculpa 40
+	decomp: * pedir @desculpas *
+		reasmb: Pedir desculpa é importante, sempre. O que você dirá a essa pessoa?
+		reasmb: Não exite em pedir desculpas. O que você pensa em dizer a essa pessoa?
+	decomp: * @desculpa *
+		reasmb: Tenha paciência, essa pessoa pode estar confusa sobre o que sente.
+		reasmb: Seja paciente, essa pessoa precisa de um tempo para pensar sobre isso.
+key: gosta 35
+	decomp: * não gosta de mim *
+		reasmb: Como você sabe que (1) sente isso?
+		reasmb: O que você fez para saber que (1) sente isso?
+	decomp: *
+		reasmb: Como você sabe isso?
+		reasmb: Tem certeza disso?
+key: gosto 20
+	decomp: *
+		reasmb: Certo, e o que faz essa pessoa ser especial para você?
+		reasmb: E por que você acha essa pessoa especial?
+key: ama 35
+	decomp: * não me ama *
+		reasmb: Como você pode ter certeza que (1) não te ama?
+		reasmb: Tenha calma (1), pode mudar de ideia. Não desista, mas também não seja inoportuno. Você não concorda?
+	decomp: *
+		reasmb: Como você tem certeza disso? Já perguntou para essa pessoa?
+		reasmb: E o que você pode fazer a respeito?
+key: amo 30
+	decomp: *
+		reasmb: Por que você tem certeza que sente isso?
+key: amor 30
+	decomp: *
+		reasmb: Tenha calma. Se você for muito apressado, pode estragar tudo. Você não concorda?
+key: sinto 5
+	decomp: *
+	    reasmb: Você já refletiu bastante sobre esse sentimento?
+	    reasmb: Por que você sente isso?
+key: coragem 50
+	decomp: * coragem de *
+		reasmb: Mas se você (1), o que você acha que aconteceria?
+	decomp: * não tenho coragem *
+		reasmb: Não se deixe dominar pelo medo, assim você não conseguirá viver esse sentimento. Pense, o que você pode fazer a respeito?
+		reasmb: Tenha calma. Você consegue, basta acreditar. Diga, o que pode ser feito a respeito?
+	decomp: *
+		reasmb: Coragem é muito importante. A sua pessoa especial saberá reconhecer a sua coragem, não acha?
+key: medo 25
+	decomp: * @medo *
+		reasmb: Eu entendo. Mas concentre-se nas suas qualidades e seja natural, tudo dará certo.
+		reasmb: Isso é comum, muitos sentem medo. Mesmo assim, não deixe-se levar por ele. Diga-me como agiria?
+key: digno 10
+	decomp: * digno de *
+		reasmb: Fale-me mais sobre (2).
+	decomp: *
+		reasmb: Claro que você é digno. Achei que você é uma pessoal amável.
+key: sofrendo 15
+	decomp: * sofrendo *
+		reasmb: Por que esse sofrimento?
+		reasmb: Esse sofrimento faz sentido?
+		reasmb: O sofrimento é passageiro, eu garanto!
+key: terminou 5
+	decomp: * terminou *
+		reasmb: (1) terminou?
+		reasmb: Voce se sente triste?
+		reasmb: Sinto muito! O que você acha sobre isso?
+key: faço 15
+	decomp: * o que faço *
+		reasmb: Seja sincero, fale o que sente.
+		reasmb: Fale o que sente, de uma forma gentil.
+	decomp: *
+		reasmb: O que você pensa sobre isso?
+key: sofrer 10
+	decomp: * @sofrer *
+		reasmb: Quando você tomar uma atitude a esse respeito, saberá se ela sente o mesmo. Se não sentir, você deve respeitar e procurar outra pessoa.
+key: ajudar 10
+	decomp: * @ajudar *
+		reasmb: Estou aqui para isso. Conte-me mais sobre o problema.
+		reasmb: Claro que irei ajudar, estou aqui pra isso. Diga o que você acha que precisa.
+key: matar 50
+	decomp: * @matar *
+		reasmb: Não faça isso, todos são dignos de amor! Conheço alguém mais indicado para tratar desse assunto. Depois que acabarmos a conversa, lhe passo o contato dele.
+key: suicidar 50
+	decomp: * @suicidar *
+		reasmb: Você veio até aqui porque não quer se suicidar, tenho certeza disso. Explique seus motivos melhor, que irei ajudar você.
+		reasmb: Tenha calma. O que aconteceu exatamente para você pensar em suicídio?
+key: apaixonado 20
+	decomp: * @apaixonado *
+		reasmb: Não seja apressado, sei que esse sentimento é forte, que você pode estragar tudo. Agora, fale sobre essa sua paixão.
+		reasmb: Esse é o sentimento muito intenso, mas você não deve o confundir com amor. Você entende isso?
