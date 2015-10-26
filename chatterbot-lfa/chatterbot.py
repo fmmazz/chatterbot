@@ -16,8 +16,8 @@ class ChatterBot:
 
     def __init__(self, initial, final, quit, pre, post, synon, key):
         """Set the chatterbot attributes."""
-        self.bot_name = "Bot"
-        self.user_name = "You"
+        self.bot_name = "Eu"
+        self.user_name = "Você"
         self.initial = initial
         self.final = final
         self.quit = quit
@@ -148,10 +148,7 @@ class ChatterBot:
     def search_keys(self, user_input):
         for i in range(len(self.key)):
             for j in range(0, len(self.key[i][2]), 2):
-
                 if re.search(r'.*\@.*', self.key[i][2][j]):
-                    #patt_syn = re.search(r'.*\@(\w+).*', user_input).group(1)
-                    #print (patt_syn)
                     if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
                         syn_to_search = re.search(
                             r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
@@ -161,45 +158,32 @@ class ChatterBot:
                     elif re.search(r'\*\s\@\w+', self.key[i][2][j]):
                         syn_to_search = re.search(
                             r'\*\s\@(\w+)', self.key[i][2][j]).group(1)
-
                     syn_to_compare = self.dict_of_synon[syn_to_search]
                     for w in range(len(self.dict_of_synon[syn_to_search])):
-                        # if syn_to_compare[w] in user_input:
                         if re.search(r'\b%s\b' % syn_to_compare[w], user_input):
                             patt = syn_to_compare[w]
                             result = re.search(
                                 r'(.*)\s*(%s)\s*(.*)' % patt, user_input)
                             return self.key[i][2][j + 1], result
-
                 if self.key[i][2][j] == '*':
                     patt = self.key[i][0]
-                    # if self.key[i][0] == '*' or self.key[i][0] in user_input:
                     if self.key[i][0] == '*' or re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'()()', user_input)
                         return self.key[i][2][j + 1], result
-
                 elif re.search(r'\*\s.*\s\*', self.key[i][2][j]):
-
                     patt = re.search(
                         r'\*\s(.*)\s\*', self.key[i][2][j]).group(1)
-                    # if re.search(r'.*\s*%s\s*.*' % patt, user_input):
                     if re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'(.*)\s*%s\s*(.*)' %
                                            patt, user_input)
                         return self.key[i][2][j + 1], result
-
                 elif re.search(r'.*\s\*', self.key[i][2][j]):
-
                     patt = re.search(r'(.*)\s\*', self.key[i][2][j]).group(1)
-                    # if re.search(r'%s\s*.*' % patt, user_input):
                     if re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'%s\s*(.*)' % patt, user_input)
                         return self.key[i][2][j + 1], result
-
                 else:
-
                     patt = re.search(r'\*\s(.*)', self.key[i][2][j]).group(1)
-                    # if re.search(r'.*\s*%s' % patt, user_input):
                     if re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'(.*)\s*%s' % patt, user_input)
                         return self.key[i][2][j + 1], result
