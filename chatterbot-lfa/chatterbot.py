@@ -12,6 +12,7 @@ import re
 
 
 class ChatterBot:
+    """The class for the chatterbot."""
 
     def __init__(self, initial, final, quit, pre, post, synon, key):
         """Set the chatterbot attributes."""
@@ -45,74 +46,11 @@ class ChatterBot:
                 final_phr = self.sub_reasbm(reasbm_phr, decomp_user_input)
                 self.print_simple_message(final_phr)
 
-    def synon_to_dict(self):
-        '''
-        Function to put synon to a dict with key as the word found in decomp
-        '''
-        syn_dict = {}
-        list_of_syn = []
-        for i in range(len(self.key)):
-            for j in range(0, len(self.key[i][2]), 2):
-                if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
-                    word_syn = re.search(r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
-                elif re.search(r'\@\w+\s\*', self.key[i][2][j]):
-                    word_syn = re.search(r'\@(\w+)\s\*', self.key[i][2][j]).group(1)
-                elif re.search(r'\*\s\@\w+', self.key[i][2][j]):
-                    word_syn = re.search(r'\*\s\@(\w+)', self.key[i][2][j]).group(1)
-                else:
-                    break
-
-                for w in range(len(self.synon)):
-                     if word_syn in self.synon[w]:
-                        list_of_syn = self.synon[w].split(' ')
-                        syn_dict[word_syn] = list_of_syn
-        return syn_dict
-
-
-    def search_keys(self, user_input):
-        for i in range(len(self.key)):
-            for j in range(0, len(self.key[i][2]), 2):
-
-                if re.search(r'.*\@.*', self.key[i][2][j]):
-                    if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
-                        syn_to_search= re.search(r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
-                    elif re.search(r'\@\w+\s\*', self.key[i][2][j]):
-                        syn_to_search = re.search(r'\@(\w+)\s\*', self.key[i][2][j]).group(1)
-                    elif re.search(r'\*\s\@\w+', self.key[i][2][j]):
-                        syn_to_search = re.search(r'\*\s\@(\w+)', self.key[i][2][j]).group(1)
-
-                    syn_to_compare = self.dict_of_synon[syn_to_search]
-                    for w in range(len(self.dict_of_synon[syn_to_search])):
-                        if syn_to_compare[w] in user_input:
-                            patt = syn_to_compare[w]
-                            result = re.search(r'(.*)\s*(%s)\s*(.*)' % patt, user_input)
-                            return self.key[i][2][j+1], result
-
-                if self.key[i][2][j] == '*':
-                    if self.key[i][0] == '*' or self.key[i][0] in user_input:
-                        result = re.search(r'()()', user_input)
-                        return self.key[i][2][j+1], result
-
-                elif re.search(r'\*\s.*\s\*', self.key[i][2][j]):
-
-                    patt = re.search(r'\*\s(.*)\s\*', self.key[i][2][j]).group(1)
-                    if re.search(r'.*\s*%s\s*.*' % patt, user_input):
-                        result = re.search(r'(.*)\s*%s\s*(.*)' % patt, user_input)
-                        return self.key[i][2][j+1], result
-
-                elif re.search(r'.*\s\*', self.key[i][2][j]):
-
-                    patt = re.search(r'(.*)\s\*', self.key[i][2][j]).group(1)
-                    if re.search(r'%s\s*.*' % patt, user_input):
-                        result = re.search(r'%s\s*(.*)' % patt, user_input)
-                        return self.key[i][2][j+1], result
-
-                else:
-
-                    patt = re.search(r'\*\s(.*)', self.key[i][2][j]).group(1)
-                    if re.search(r'.*\s*%s' % patt, user_input):
-                        result = re.search(r'(.*)\s*%s' % patt, user_input)
-                        return self.key[i][2][j+1], result
+    def get_user_input(self):
+        """Ask for the user input, showing the defined name for it."""
+        user_input = input(self.user_name + ': ')
+        user_input = user_input.lower()
+        return user_input
 
     def string_to_list_of_words(self, user_string):
         """Split the user input in words, save in list."""
@@ -142,6 +80,7 @@ class ChatterBot:
         return list_of_reasmb_phrases[0][0]
 
     def mark_reasmb_as_not_used(self, list_of_reasmb_phrases):
+        """Change all the reasmb values to false."""
         for reasbm_phrase in list_of_reasmb_phrases:
             reasbm_phrase[1] = False
         return list_of_reasmb_phrases
@@ -155,12 +94,6 @@ class ChatterBot:
         """Print the passed message and the bot name in front of it."""
         print(self.bot_name + ':', message)
 
-    def get_user_input(self):
-        """Ask for the user input, showing the defined name for it."""
-        user_input = input(self.user_name + ': ')
-        return user_input
-
-    # Text processing methods that use regular expression
     def is_quit(self, response):
         """Check to see if the answer from the user is a quit one."""
         quits = []
@@ -172,12 +105,37 @@ class ChatterBot:
         else:
             return False
 
+    def synon_to_dict(self):
+        """Put synon to dict with key as the word found in decomp."""
+        syn_dict = {}
+        list_of_syn = []
+        for i in range(len(self.key)):
+            for j in range(0, len(self.key[i][2]), 2):
+                if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
+                    word_syn = re.search(
+                        r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                elif re.search(r'\@\w+\s\*', self.key[i][2][j]):
+                    word_syn = re.search(
+                        r'\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                elif re.search(r'\*\s\@\w+', self.key[i][2][j]):
+                    word_syn = re.search(
+                        r'\*\s\@(\w+)', self.key[i][2][j]).group(1)
+                else:
+                    break
+
+                for w in range(len(self.synon)):
+                    if word_syn in self.synon[w]:
+                        list_of_syn = self.synon[w].split(' ')
+                        syn_dict[word_syn] = list_of_syn
+        return syn_dict
+
     def pre_proc(self, response):
         """
-        Do the pre processing of the response from the user. Binds together
-        relate words in pre list. Separate in two lists (no graphic mark and
-        with graphic mark. Binds together in dict no graphic: with graphic.
-        Finds word and replace by your content in dict.
+        Do the pre processing of the response from the user.
+
+        Binds together relate words in pre list. Separate in two lists
+        (no graphic mark and with graphic mark. Binds together in dict no
+        graphic: with graphic. Finds word and replace by your content in dict.
         """
         pre_s = []
         pattern = re.compile("\\b(pre:)\\W", re.I)
@@ -187,11 +145,63 @@ class ChatterBot:
         pattern = re.compile(r'\b(' + '|'.join(dic_pre.keys()) + r')\b')
         return pattern.sub(lambda x: dic_pre[x.group()], response)
 
+    def search_keys(self, user_input):
+        for i in range(len(self.key)):
+            for j in range(0, len(self.key[i][2]), 2):
+
+                if re.search(r'.*\@.*', self.key[i][2][j]):
+                    if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
+                        syn_to_search = re.search(
+                            r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                    elif re.search(r'\@\w+\s\*', self.key[i][2][j]):
+                        syn_to_search = re.search(
+                            r'\@(\w+)\s\*', self.key[i][2][j]).group(1)
+                    elif re.search(r'\*\s\@\w+', self.key[i][2][j]):
+                        syn_to_search = re.search(
+                            r'\*\s\@(\w+)', self.key[i][2][j]).group(1)
+
+                    syn_to_compare = self.dict_of_synon[syn_to_search]
+                    for w in range(len(self.dict_of_synon[syn_to_search])):
+                        if syn_to_compare[w] in user_input:
+                            patt = syn_to_compare[w]
+                            result = re.search(
+                                r'(.*)\s*(%s)\s*(.*)' % patt, user_input)
+                            return self.key[i][2][j + 1], result
+
+                if self.key[i][2][j] == '*':
+                    if self.key[i][0] == '*' or self.key[i][0] in user_input:
+                        result = re.search(r'()()', user_input)
+                        return self.key[i][2][j + 1], result
+
+                elif re.search(r'\*\s.*\s\*', self.key[i][2][j]):
+
+                    patt = re.search(
+                        r'\*\s(.*)\s\*', self.key[i][2][j]).group(1)
+                    if re.search(r'.*\s*%s\s*.*' % patt, user_input):
+                        result = re.search(r'(.*)\s*%s\s*(.*)' %
+                                           patt, user_input)
+                        return self.key[i][2][j + 1], result
+
+                elif re.search(r'.*\s\*', self.key[i][2][j]):
+
+                    patt = re.search(r'(.*)\s\*', self.key[i][2][j]).group(1)
+                    if re.search(r'%s\s*.*' % patt, user_input):
+                        result = re.search(r'%s\s*(.*)' % patt, user_input)
+                        return self.key[i][2][j + 1], result
+
+                else:
+
+                    patt = re.search(r'\*\s(.*)', self.key[i][2][j]).group(1)
+                    if re.search(r'.*\s*%s' % patt, user_input):
+                        result = re.search(r'(.*)\s*%s' % patt, user_input)
+                        return self.key[i][2][j + 1], result
+
     def post_proc(self, response):
         """
-        Do the post processing of the response from the user. Binds together
-        relate words in post list. Separate in two lists and bind together in
-        dict, like
+        Do the post processing of the response from the user.
+
+        Binds together relate words in post list. Separate in two lists and
+        bind together in dict, like
             dict => key: word to be replaced
         Finds word and replace by your content in dict.
         """
@@ -205,7 +215,9 @@ class ChatterBot:
 
     def sub_reasbm(self, reasbm, decomp):
         """
-        Apply the post_proc in user answer and replace user content in reasbm
+        Mount the answer.
+
+        Apply the post_proc in user answer and replace user content in reasbm,
         if needed.
         """
         if re.search(r'\(1\)', reasbm):
