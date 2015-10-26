@@ -1,4 +1,4 @@
-initial: Olá! Meu nome é Eva. Fale-me sobre seus problemas amorosos!!
+initial: Olá! Sou Vênus, conselheira amorosa. Me conte, qual é o problema com a pessoa de quem você gosta?
 final: Adeus e boa sorte!
 quit: adeus
 quit: tchau
@@ -22,62 +22,33 @@ synon: ajudar ajuda conselho ajude auxilie
 synon: olá oi saudações
 synon: linda lindo inteligente charmosa charmoso querido querida maravilhosa maravilhoso
 synon: recusar fora rejeitar
-synon: medo vergonha tímida timidez
+synon: medo vergonha tímida tímido timidez
 synon: amigo amiga colega parceiro parceira vizinho vizinha
-synon: mensagem sms whats ligação email mensagens ligações emails
-synon: fugir escapar despistar
+synon: mensagem mensagens ligação ligações email emails recado recados
 synon: insistir insistindo incomodando
 key: olá 20
 	decomp: * @olá *
-		reasmb: Olá, como vai você?
-		reasmb: Tudo bem contigo?
-		reasmb: Seja bem-vindo!
-key: sim 10
-	decomp: * sim *
-		reasmb: Verdade?
-		reasmb: Me conte mais sobre isso!
-		reasmb: Não me diga?
-key: não 10
-	decomp: * não *
-		reasmb: Sério?
-		reasmb: Me fale mais sobre isso!
-		reasmb: Qual seu sentimento em relação a isso?
+		reasmb: Olá! Por favor, me conte, qual é o problema com a pessoa de quem você gosta?
+		reasmb: Olá, seja bem-vindo! Me conte, qual é o problema com a pessoa de quem você gosta?
 key: amigo 15
 	decomp: * @amigo *
-		reasmb: De onde vocês se conhecem??
-		reasmb: E ele sabe que você quer continuar com a relação como está?
-		reasmb: Conte seus sentimentos pra ele!
-		reasmb: Tão longe, mas tão perto, não hahaha? Conte tudo pra ele!
-key: linda 20
+		reasmb: Você tem sorte de serem próximos. O que você pensa em fazer a respeito?
+		reasmb: Ótimo! O que você fará para aproximar-se?
+key: linda 5
 	decomp: * @linda *
-		reasmb: Sério? Que amor!!
-		reasmb: Seu amor parece combinar com você!
-		reasmb: Você é muito amável! Tente falar com o seu amor de novo!
-		reasmb: Você realmente está amando!
-		reasmb: O seu amor precisa saber que você acha isso!!!
-		reasmb: Conte tudo isso para o seu amor!!!
+		reasmb: Que bom que você acha isso. Mas já procurou conhecer essa pessoa melhor?
+		reasmb: Isso é bom! Agora, você precisa conhecer essa pessoa melhor. Como acha que fará isso?
 key: mensagem 20
 	decomp: * @mensagem *
-		reasmb: Opa! Sinal de alerta! Ele pode estar confuso sobre os sentimentos!
-		reasmb: Deve estar sem bateria! Espere um pouco! ;)
-		reasmb: Ele pode não ter visto, relaxe!
-		reasmb: Será que ele está preparado para o que você quer?
-key: fugir 15
-	decomp: * @fugir *
-		reasmb: Diga que não quer nada!
-		reasmb: Converse com ele e explique a situação!
-		reasmb: Despiste ele!
-		reasmb: Ignore suas mensagens!
-		reasmb: Deixe ele no vácuo! ;)
+		reasmb: Se essa pessoa é especial, certamente irá responder, espere. Agora, me diga, quais são os seus planos?
+		reasmb: Tenha paciência. Se ela não responder dentro de alguns dias, mande outra. Ela perceberá suas intenções. Além disso, o que mais você tem a me dizer?
 key: insistir 14
 	decomp: * @insistir *
-		reasmb: Converse com ele!
-		reasmb: Explique sua situação para ele!
 		reasmb: Uma conversa é sempre bom para os dois lados!
 key: recusar 20
 	decomp: * @recusar *
 		reasmb: Seu amor não faria isso com você!!
-		reasmb: Não custa tentar não é mesmo? ;) 
+		reasmb: Não custa tentar não é mesmo? ;)
 		reasmb: Não deixe que o medo de errar impeça que você tente!
 		reasmb: O máximo que você irá receber é um não, não é mesmo? \_(ツ)_/
 key: obrigado 35
@@ -151,8 +122,8 @@ key: gosta 5
 		reasmb: O que você fez para saber que (1) sente isso?
 key: gosto 1
 	decomp: *
-		reasmb: O que faz essa pessoa ser especial para você?
-		reasmb: Por que você acha essa pessoa especial?
+		reasmb: Certo, e o que faz essa pessoa ser especial para você?
+		reasmb: E por que você acha essa pessoa especial?
 key: sofrer 7
 	decomp: * @sofrer *
 		reasmb: Não se preocupe, esse sentimento não durará muito. Falo por experiência.
@@ -171,16 +142,15 @@ key: apaixonado 20
 	decomp: * apaixonado *
 		reasmb: Não seja apressado, sei que esse sentimento é forte, que você pode estragar tudo. Agora, fale sobre essa sua paixão.
 		reasmb: Esse é o sentimento muito intenso, mas você não deve o confundir com amor. Você entende isso?
-key: gostar 7
-	decomp: * gostar dele *
-		reasmb: aaaaaaa
-	decomp: * gostar de bla *
-		reasmb: balblóblalb
-	decomp: *
+key: gosta 15
+	decomp: * não gosta de mim
+		reasmb: Como você pode ter certeza que (1) não gosta de você?
+	decomp: * gosta *
+		reasmb: Como você sabe? Já perguntou a ela?
 		reasmb: Vá com calma. Você tem certeza desse sentimento?
 key:
 	decomp: *
-		reasmb: Compreendo. Fale-me sobre a relação que você tem com a sua pessoa especial?
-		reasmb: Que interessante. Mas me diga. Como você tem lidado com esses sentimentos?
-		reasmb: Interessante, conte-me mais!
-		reasmb: Conte-me tudo!!
+		reasmb: Compreendo. Fale-me sobre isso.
+		reasmb: Que interessante. Por favor, continue.
+		reasmb: Estou ouvindo, continue.
+		reasmb: Certo, e o que mais?
