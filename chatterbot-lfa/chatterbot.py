@@ -106,7 +106,7 @@ class ChatterBot:
             return False
 
     def synon_to_dict(self):
-        """Put synon to dict with key as the word found in decomp."""
+        """Put synon to a dict with key as the word found in decomp."""
         syn_dict = {}
         list_of_syn = []
         for i in range(len(self.key)):
@@ -150,6 +150,8 @@ class ChatterBot:
             for j in range(0, len(self.key[i][2]), 2):
 
                 if re.search(r'.*\@.*', self.key[i][2][j]):
+                    #patt_syn = re.search(r'.*\@(\w+).*', user_input).group(1)
+                    #print (patt_syn)
                     if re.search(r'\*\s\@\w+\s\*', self.key[i][2][j]):
                         syn_to_search = re.search(
                             r'\*\s\@(\w+)\s\*', self.key[i][2][j]).group(1)
@@ -162,14 +164,17 @@ class ChatterBot:
 
                     syn_to_compare = self.dict_of_synon[syn_to_search]
                     for w in range(len(self.dict_of_synon[syn_to_search])):
-                        if syn_to_compare[w] in user_input:
+                        # if syn_to_compare[w] in user_input:
+                        if re.search(r'\b%s\b' % syn_to_compare[w], user_input):
                             patt = syn_to_compare[w]
                             result = re.search(
                                 r'(.*)\s*(%s)\s*(.*)' % patt, user_input)
                             return self.key[i][2][j + 1], result
 
                 if self.key[i][2][j] == '*':
-                    if self.key[i][0] == '*' or self.key[i][0] in user_input:
+                    patt = self.key[i][0]
+                    # if self.key[i][0] == '*' or self.key[i][0] in user_input:
+                    if self.key[i][0] == '*' or re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'()()', user_input)
                         return self.key[i][2][j + 1], result
 
@@ -177,7 +182,8 @@ class ChatterBot:
 
                     patt = re.search(
                         r'\*\s(.*)\s\*', self.key[i][2][j]).group(1)
-                    if re.search(r'.*\s*%s\s*.*' % patt, user_input):
+                    # if re.search(r'.*\s*%s\s*.*' % patt, user_input):
+                    if re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'(.*)\s*%s\s*(.*)' %
                                            patt, user_input)
                         return self.key[i][2][j + 1], result
@@ -185,14 +191,16 @@ class ChatterBot:
                 elif re.search(r'.*\s\*', self.key[i][2][j]):
 
                     patt = re.search(r'(.*)\s\*', self.key[i][2][j]).group(1)
-                    if re.search(r'%s\s*.*' % patt, user_input):
+                    # if re.search(r'%s\s*.*' % patt, user_input):
+                    if re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'%s\s*(.*)' % patt, user_input)
                         return self.key[i][2][j + 1], result
 
                 else:
 
                     patt = re.search(r'\*\s(.*)', self.key[i][2][j]).group(1)
-                    if re.search(r'.*\s*%s' % patt, user_input):
+                    # if re.search(r'.*\s*%s' % patt, user_input):
+                    if re.search(r'\b%s\b' % patt, user_input):
                         result = re.search(r'(.*)\s*%s' % patt, user_input)
                         return self.key[i][2][j + 1], result
 
