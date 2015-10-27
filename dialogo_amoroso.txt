@@ -25,25 +25,37 @@ synon: linda lindo inteligente charmosa charmoso querido querida maravilhosa mar
 synon: recusar rejeitar
 synon: recusou rejeitou
 synon: medo vergonha tímida tímido timidez
-synon: amigo amiga colega parceiro parceira vizinho vizinha
+synon: amigo amiga amigos colega parceiro parceira vizinho vizinha
 synon: mensagem mensagens ligação ligações email emails recado recados
 synon: desculpa desculpas
 synon: o a
 synon: apaixonado paixão
+synon: sente sentia
 key:
 	decomp: *
 		reasmb: Compreendo. Fale-me sobre isso.
-		reasmb: Que interessante. Por favor, continue.
-		reasmb: Estou ouvindo, continue.
+		reasmb: Interessante, por favor, continue.
+		reasmb: Estou ouvindo, por favor, continue.
 		reasmb: Certo, e o que mais?
 key: olá 5
 	decomp: * @olá *
 		reasmb: Olá! Por favor, me conte, qual é o problema com a pessoa de quem você gosta?
 		reasmb: Olá, seja bem-vindo! Me conte, qual é o problema com a pessoa de quem você gosta?
+key: indicar 30
+	decomp: * indicar *
+		reasmb: Tenho sim. Lhe enviarei o contato por email logo que acabar o nosso encontro. Você tem mais alguma coisa para me contar?
+key: só 60
+	decomp: * só *
+		reasmb: Você tem procurado sair e conhecer pessoas? Se for o caso, posso te indicar um bom terapeuta.
+		reasmb: Você já procurou um terapeuta? Posso te indicar alguns, se quiser.
+key: sente 30
+	decomp: * não @sente *
+		reasmb: Isso é uma pena. Creio que você terá que dar um tempo a essa pessoa. Tenha em mente que todos são únicos, mas ninguém é insubstituível. Você não concorda?
+	decomp: * @sente *
+		reasmb:
 key: amigo 15
-	decomp: * melhor @amigo *
-		reasmb: E se não der certo, você acha que pode perder a amizade?
 	decomp: * @amigo *
+		reasmb: Você acha que pode perder a amizade dessa pessoa?
 		reasmb: Você tem sorte de serem próximos. O que você pensa em fazer a respeito?
 		reasmb: Ótimo! E o que você pensa em fazer para aproximar-se dessa pessoa?
 key: linda 5
@@ -52,7 +64,7 @@ key: linda 5
 		reasmb: Isso é bom! Agora, você precisa conhecer essa pessoa melhor. Como acha que fará isso?
 key: mensagem 20
 	decomp: * @mensagem *
-		reasmb: Se essa pessoa é especial, certamente irá responder; espere. Agora, me diga, quais são os seus planos?
+		reasmb: Se essa pessoa é merecedora do seu afeto, certamente irá responder, você deve ter paciência. Agora, me diga, quais são os seus planos?
 		reasmb: Tenha paciência. Se ela não responder dentro de alguns dias, mande outra. Ela perceberá suas intenções. Além disso, o que mais você tem a me dizer?
 key: recusar 20
 	decomp: * @recusar *
@@ -83,8 +95,8 @@ key: gosta 35
 		reasmb: Como você sabe que (1) sente isso?
 		reasmb: O que você fez para saber que (1) sente isso?
 	decomp: *
-		reasmb: Como você sabe isso?
 		reasmb: Tem certeza disso?
+		reasmb: Como você sabe disso?
 key: gosto 20
 	decomp: *
 		reasmb: Certo, e o que faz essa pessoa ser especial para você?
