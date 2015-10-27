@@ -43,7 +43,7 @@ key: olá 5
 		reasmb: Olá, seja bem-vindo! Me conte, qual é o problema com a pessoa de quem você gosta?
 key: indicar 30
 	decomp: * indicar *
-		reasmb: Tenho sim. Lhe enviarei o contato por email logo que acabar o nosso encontro. Você tem mais alguma coisa para me contar?
+		reasmb: Claro. Lhe enviarei o contato por email logo que acabar o nosso encontro. Você tem mais alguma coisa para me contar?
 key: só 60
 	decomp: * só *
 		reasmb: Você tem procurado sair e conhecer pessoas? Se for o caso, posso te indicar um bom terapeuta.
@@ -51,17 +51,18 @@ key: só 60
 key: sente 30
 	decomp: * não @sente *
 		reasmb: Isso é uma pena. Creio que você terá que dar um tempo a essa pessoa. Tenha em mente que todos são únicos, mas ninguém é insubstituível. Você não concorda?
+		reasmb: Tenha paciência. Busque se divertir com ela sem outras pretensões que não a amizade. Se for para vocês ficarem mais próximos, isso acontecerá nautralmente.
 	decomp: * @sente *
 		reasmb:
 key: amigo 15
 	decomp: * @amigo *
-		reasmb: Você acha que pode perder a amizade dessa pessoa?
 		reasmb: Você tem sorte de serem próximos. O que você pensa em fazer a respeito?
 		reasmb: Ótimo! E o que você pensa em fazer para aproximar-se dessa pessoa?
+		reasmb: Você acha que pode perder a amizade dessa pessoa?
 key: linda 5
 	decomp: * @linda *
 		reasmb: Que bom que você acha isso. Mas já procurou conhecer essa pessoa melhor?
-		reasmb: Isso é bom! Agora, você precisa conhecer essa pessoa melhor. Como acha que fará isso?
+		reasmb: Ótimo. Mas o quanto você conhece essa pessoa?
 key: mensagem 20
 	decomp: * @mensagem *
 		reasmb: Se essa pessoa é merecedora do seu afeto, certamente irá responder, você deve ter paciência. Agora, me diga, quais são os seus planos?
@@ -150,7 +151,7 @@ key: faço 15
 		reasmb: Seja sincero, fale o que sente.
 		reasmb: Fale o que sente, de uma forma gentil.
 	decomp: *
-		reasmb: O que você pensa sobre isso?
+		reasmb: O que você pensa em fazer?
 key: sofrer 10
 	decomp: * @sofrer *
 		reasmb: Quando você tomar uma atitude a esse respeito, saberá se ela sente o mesmo. Se não sentir, você deve respeitar e procurar outra pessoa.
